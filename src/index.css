@@ -1,0 +1,221 @@
+@import url("https://fonts.googleapis.com/css2?family=Syne:wght@400..800&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Hanken+Grotesk:ital,wght@0,100..900;1,100..900&family=Syne:wght@400..800&display=swap');
+@import "tailwindcss";
+
+/* =========================================
+   THEME
+========================================= */
+
+@theme {
+
+  /* =========================
+     COLORS
+  ========================= */
+
+  --color-primary: #5b38f7;
+  --color-primary-dark: #4727d7;
+
+  --color-accent: #c6ff00;
+
+  --color-bg: #f5f5f5;
+  --color-surface: #ffffff;
+
+  --color-text: #111111;
+  --color-text-light: #6b7280;
+
+  --color-border: #e5e7eb;
+
+  /* =========================
+     TYPOGRAPHY
+  ========================= */
+
+  --font-heading: "Sora", sans-serif;
+  --font-body: "Inter", sans-serif;
+
+  /* =========================
+     FONT SIZES
+  ========================= */
+
+  --text-display: 72px;
+  --text-h1: 56px;
+  --text-h2: 44px;
+  --text-h3: 32px;
+  --text-h4: 24px;
+  --text-h5: 20px;
+  --text-body-lg: 18px;
+  --text-body: 16px;
+  --text-small: 14px;
+
+  /* =========================
+     LINE HEIGHTS
+  ========================= */
+
+  --leading-display: 1;
+  --leading-heading: 1.1;
+  --leading-body: 1.7;
+
+  /* =========================
+     SPACING
+  ========================= */
+
+  --section-padding: 120px;
+  --container-padding: 24px;
+
+  /* =========================
+     RADIUS
+  ========================= */
+
+  --radius-primary: 24px;
+  --radius-secondary: 18px;
+
+  /* =========================
+     SHADOWS
+  ========================= */
+
+  --shadow-primary: 0 10px 30px rgba(0,0,0,0.08);
+
+  /* =========================
+     CONTAINER
+  ========================= */
+
+  --container-max: 1440px;
+
+  /* =========================
+     TRANSITIONS
+  ========================= */
+
+  --ease-primary: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* =========================================
+   BASE STYLES
+========================================= */
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-body);
+  background: var(--color-bg);
+  color: var(--color-text);
+  line-height: var(--leading-body);
+  overflow-x: hidden;
+}
+
+/* =========================================
+   TYPOGRAPHY
+========================================= */
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-heading);
+  line-height: var(--leading-heading);
+  font-weight: 600;
+  letter-spacing: -0.03em;
+}
+
+h1 {
+  font-size: clamp(3rem, 7vw, var(--text-h1));
+}
+
+h2 {
+  font-size: clamp(2.5rem, 5vw, var(--text-h2));
+}
+
+h3 {
+  font-size: clamp(2rem, 4vw, var(--text-h3));
+}
+
+h4 {
+  font-size: clamp(1.4rem, 3vw, var(--text-h4));
+}
+
+p {
+  color: var(--color-text-light);
+}
+
+/* =========================================
+   REUSABLE UTILITIES
+========================================= */
+
+@utility container-custom {
+  width: 100%;
+  max-width: var(--container-max);
+  margin-inline: auto;
+  padding-inline: var(--container-padding);
+}
+
+@utility section-space {
+  padding-block: var(--section-padding);
+}
+
+@utility flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@utility transition-primary {
+  transition: all 0.4s var(--ease-primary);
+}
+
+/* =========================================
+   COMPONENTS
+========================================= */
+
+@layer components {
+
+  .btn-primary {
+    @apply inline-flex items-center justify-center px-7 py-4 rounded-full font-medium transition-all duration-300;
+    background: var(--color-accent);
+    color: var(--color-text);
+  }
+
+  .btn-primary:hover {
+    transform: translateY(-2px);
+  }
+
+  .btn-secondary {
+    @apply inline-flex items-center justify-center px-7 py-4 rounded-full;
+    background: var(--color-primary);
+    color: white;
+  }
+
+  .section-title {
+    @apply max-w-2xl;
+  }
+
+  .card-primary {
+    background: white;
+    border-radius: var(--radius-primary);
+    box-shadow: var(--shadow-primary);
+  }
+}
+
+/* =========================================
+   RESPONSIVE
+========================================= */
+
+@media (max-width: 1024px) {
+  :root {
+    --section-padding: 90px;
+  }
+}
+
+@media (max-width: 768px) {
+  :root {
+    --section-padding: 72px;
+    --container-padding: 18px;
+  }
+}
+
+@media (max-width: 480px) {
+  :root {
+    --section-padding: 60px;
+  }
+}
