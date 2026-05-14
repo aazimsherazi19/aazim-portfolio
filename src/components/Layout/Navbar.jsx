@@ -43,7 +43,7 @@ const Navbar = () => {
       </div>
 
       <div className='hidden lg:block'>
-        <button className='btn-secondary'>
+        <button className='btn-secondary hover:bg-[var(--color-accent)] hover:text-black transition-primary'>
           Hire Me
         </button>
       </div>
@@ -93,7 +93,7 @@ const Navbar = () => {
             </NavLink>
           ))}
 
-          <button className='btn-secondary mt-4'>
+          <button className='btn-secondary mt-4 hover:bg-[var(--color-accent)] hover:text-black transition-primary'>
            Hire Me
           </button>
         </nav>
