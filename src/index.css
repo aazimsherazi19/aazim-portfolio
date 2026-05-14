@@ -12,7 +12,7 @@
      COLORS
   ========================= */
 
-  --color-primary: #5b38f7;
+  --color-primary: #5840BA;
   --color-primary-dark: #4727d7;
 
   --color-accent: #c6ff00;
@@ -29,8 +29,8 @@
      TYPOGRAPHY
   ========================= */
 
-  --font-heading: "Sora", sans-serif;
-  --font-body: "Inter", sans-serif;
+  --font-heading: "Syne", sans-serif;
+  --font-body: "Hanken Grotesk", sans-serif;
 
   /* =========================
      FONT SIZES
@@ -171,7 +171,7 @@ p {
 @layer components {
 
   .btn-primary {
-    @apply inline-flex items-center justify-center px-7 py-4 rounded-full font-medium transition-all duration-300;
+    @apply inline-flex items-center justify-center px-6 py-2 font-medium transition-all duration-300;
     background: var(--color-accent);
     color: var(--color-text);
   }
@@ -181,7 +181,7 @@ p {
   }
 
   .btn-secondary {
-    @apply inline-flex items-center justify-center px-7 py-4 rounded-full;
+    @apply inline-flex items-center justify-center px-6 py-2 ;
     background: var(--color-primary);
     color: white;
   }
