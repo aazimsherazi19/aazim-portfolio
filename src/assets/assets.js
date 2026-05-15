@@ -8,6 +8,7 @@ import project1 from './project1.png'
 import t1 from './t1.png'
 import t2 from './t2.png'
 import t3 from './t3.png'
+import g1 from './g1.png'
 
 
 export const assets = {
@@ -20,7 +21,8 @@ export const assets = {
     project1,
     t1,
     t2,
-    t3
+    t3,
+    g1
 }
 
 

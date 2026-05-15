@@ -6,6 +6,7 @@ import Services from '../sections/Services.jsx'
 import OurProcess from '../sections/OurProcess.jsx'
 import Projects from '../sections/Projects.jsx'
 import Testimonials from '../sections/Testimonials.jsx'
+import PortfolioGrid from '../sections/PortfolioGrid.jsx'
 
 const Home = () => {
   return (
@@ -17,6 +18,7 @@ const Home = () => {
       <OurProcess/>
       <Projects/>
       <Testimonials/>
+      <PortfolioGrid/>
     </div>
   )
 }
