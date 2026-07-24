@@ -33,7 +33,7 @@ const Hero = () => {
           </div>
 
           {/* Main Headline */}
-          <h1 className="text-4xl sm:text-6xl lg:text-7xl font-heading font-extrabold text-gray-900 leading-[1.08] tracking-tight">
+          <h1 className="text-3xl sm:text-5xl lg:text-6xl font-heading font-extrabold text-gray-900 leading-[1.1] tracking-tight">
             Designing <br />
             <span className="text-[var(--color-primary)]">
               Digital Products

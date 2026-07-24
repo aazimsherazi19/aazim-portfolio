@@ -36,12 +36,12 @@
      FONT SIZES
   ========================= */
 
-  --text-display: 80px;
-  --text-h1: 56px;
-  --text-h2: 44px;
-  --text-h3: 32px;
-  --text-h4: 24px;
-  --text-h5: 20px;
+  --text-display: 64px;
+  --text-h1: 44px;
+  --text-h2: 36px;
+  --text-h3: 26px;
+  --text-h4: 20px;
+  --text-h5: 18px;
   --text-body-lg: 18px;
   --text-body: 16px;
   --text-small: 14px;
@@ -50,15 +50,15 @@
      LINE HEIGHTS
   ========================= */
 
-  --leading-display: 1;
-  --leading-heading: 1.1;
+  --leading-display: 1.05;
+  --leading-heading: 1.15;
   --leading-body: 1.7;
 
   /* =========================
      SPACING
   ========================= */
 
-  --section-padding: 120px;
+  --section-padding: 100px;
   --container-padding: 24px;
 
   /* =========================
@@ -116,23 +116,23 @@ h6 {
   font-family: var(--font-heading);
   line-height: var(--leading-heading);
   font-weight: 600;
-  letter-spacing: -0.03em;
+  letter-spacing: -0.02em;
 }
 
 h1 {
-  font-size: clamp(4.5rem, 7vw, var(--text-h1));
+  font-size: clamp(2.25rem, 4.5vw, 3.25rem);
 }
 
 h2 {
-  font-size: clamp(2.5rem, 5vw, var(--text-h2));
+  font-size: clamp(1.75rem, 3.5vw, 2.5rem);
 }
 
 h3 {
-  font-size: clamp(2rem, 4vw, var(--text-h3));
+  font-size: clamp(1.35rem, 2.5vw, 1.75rem);
 }
 
 h4 {
-  font-size: clamp(1.4rem, 3vw, var(--text-h4));
+  font-size: clamp(1.1rem, 2vw, 1.35rem);
 }
 
 p {
