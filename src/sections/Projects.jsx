@@ -1,103 +1,115 @@
-import React, { useRef } from 'react';
-import { motion, useTransform, useScroll } from 'framer-motion';
-import { ArrowRight } from 'lucide-react';
-import {assets} from '../assets/assets'
+import React, { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { ArrowRight, Sparkles, FolderGit2 } from 'lucide-react';
+import { Link } from 'react-router-dom';
+import { projectsData } from '../data/projects';
+import ProjectCard from '../components/ui/ProjectCard';
 
-const projects = [
-  {
-    id: 1,
-    date: "January 2024",
-    title: "Modern Web Design Portfolio",
-    image: assets.project1,
-    desc: "Designed a sleek, modern portfolio showcasing creative work with an intuitive user-friendly interface.",
-  },
-  {
-    id: 2,
-    date: "March 2024",
-    title: "E-Commerce Website Revamp",
-    image: assets.project1,
-    desc: "A complete overhaul of an online store, focusing on conversion rates and mobile responsiveness.",
-  },
-  {
-    id: 3,
-    date: "May 2024",
-    title: "SaaS Dashboard UI Kit",
-    image: assets.project1,
-    desc: "Minimalist and clean dashboard design for a project management tool with dark mode support.",
-  },
-  {
-    id: 4,
-    date: "June 2024",
-    title: "Mobile Banking App",
-    image: assets.project1,
-    desc: "Secure and user-centric mobile application design for a leading fintech startup.",
-  },
-];
+const categories = ['All', 'E-Commerce', 'SaaS', 'Web Design', 'Fintech'];
 
 const Projects = () => {
-  const targetRef = useRef(null);
-  const { scrollYProgress } = useScroll({ target: targetRef });
+  const [activeCategory, setActiveCategory] = useState('All');
 
-  // Projects ko left shift karne ke liye logic
-  const x = useTransform(scrollYProgress, [0, 1], ["0%", "-70%"]);
+  // Filter projects by active category
+  const filteredProjects = activeCategory === 'All'
+    ? projectsData
+    : projectsData.filter((p) => p.category === activeCategory);
 
   return (
-    <section ref={targetRef} className="relative h-[400vh] bg-primary">
-      {/* Sticky container jo screen pe ruka rahega */}
-      <div className="sticky top-0 flex h-screen items-center overflow-hidden">
+    <section className="section-space container-custom relative overflow-hidden py-24">
+      {/* Background Decorative Ambient Orbs */}
+      <div className="absolute top-1/3 right-0 w-96 h-96 bg-[var(--color-primary)]/10 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute bottom-10 left-0 w-96 h-96 bg-[var(--color-accent)]/10 rounded-full blur-3xl pointer-events-none" />
+
+      {/* =========================================
+         SECTION HEADER & CATEGORY FILTER TABS
+      ========================================= */}
+      <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-8 mb-14">
         
-        {/* Section Header */}
-        <div className="absolute top-[10%] left-[6%] z-20 flex justify-between items-center w-[88%]">
-          <h2 className="text-white text-h2 font-heading font-bold">Our Projects</h2>
-          <button className="btn-primary rounded-sm hidden md:flex items-center gap-2 text-small font-bold px-6 py-3">
-            View All Projects <ArrowRight className="w-4 h-4" />
-          </button>
+        {/* Left Title */}
+        <div className="max-w-2xl">
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[var(--color-primary)]/10 border border-[var(--color-primary)]/15 text-xs font-semibold uppercase tracking-widest text-[var(--color-primary)] mb-4">
+            <Sparkles size={14} className="text-[var(--color-primary)]" />
+            Featured Work
+          </div>
+
+          <h2 className="text-4xl md:text-5xl font-heading font-bold text-gray-900 leading-tight">
+            Crafting High-Impact <br />
+            <span className="text-[var(--color-primary)]">
+              Digital Experiences.
+            </span>
+          </h2>
         </div>
 
-        {/* Horizontal Moving Track */}
-        <motion.div style={{ x }} className="flex gap-8 px-[6vw] mt-20">
-          {projects.map((project, index) => (
-            <div 
-              key={index}
-              className="group flex flex-col md:flex-row bg-white/5 border border-white/10 rounded-2xl overflow-hidden transition-all duration-500 hover:bg-white cursor-pointer w-[90vw] md:w-[75vw] lg:w-[1000px] h-[500px] shrink-0"
-            >
-              {/* Left: Content Side (UI from 1st SS) */}
-              <div className="flex-1 p-8 md:p-14 flex flex-col justify-between order-2 md:order-1">
-                <div className="space-y-4">
-                  <span className="text-white/60 text-small font-medium group-hover:text-primary transition-colors">
-                    {project.date}
-                  </span>
-                  <h3 className="text-white text-h2 font-heading leading-tight group-hover:text-black transition-colors">
-                    {project.title}
-                  </h3>
-                </div>
-
-                <div className="mt-8 space-y-6">
-                  <p className="!text-white text-body max-w-sm group-hover:!text-black/70 transition-colors">
-                    {project.desc}
-                  </p>
-                  <div className="flex items-center gap-2 text-accent group-hover:text-primary font-bold transition-colors">
-                    <span className="text-small">View Project</span>
-                    <ArrowRight className="w-4 h-4" />
-                  </div>
-                </div>
-              </div>
-
-              {/* Right: Image Side */}
-              <div className="flex-1 overflow-hidden order-1 md:order-2">
-                <img 
-                  src={project.image} 
-                  alt={project.title} 
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
-                />
-              </div>
-            </div>
-          ))}
-          
-          {/* Last Spacing */}
-          <div className="w-[15vw] shrink-0" />
-        </motion.div>
+        {/* Right Action Link */}
+        <div>
+          <Link
+            to="/projects"
+            className="inline-flex items-center gap-2.5 px-6 py-3.5 rounded-full font-heading font-semibold text-white bg-[var(--color-primary)] hover:bg-[var(--color-accent)] hover:text-black transition-all duration-300 shadow-md transform hover:-translate-y-0.5"
+          >
+            <span>View All Projects</span>
+            <ArrowRight size={18} />
+          </Link>
+        </div>
       </div>
+
+      {/* Category Filter Pills */}
+      <div className="flex items-center gap-2.5 flex-wrap mb-12 border-b border-gray-200 pb-6">
+        {categories.map((cat) => (
+          <button
+            key={cat}
+            onClick={() => setActiveCategory(cat)}
+            className={`px-5 py-2.5 rounded-full text-sm font-semibold transition-all duration-300 ${
+              activeCategory === cat
+                ? 'bg-[var(--color-primary)] text-white shadow-md shadow-[var(--color-primary)]/20 scale-105'
+                : 'bg-gray-100 text-gray-600 hover:bg-gray-200 hover:text-gray-900'
+            }`}
+          >
+            {cat}
+          </button>
+        ))}
+      </div>
+
+      {/* =========================================
+         PROJECTS CARDS GRID
+      ========================================= */}
+      <motion.div 
+        layout 
+        className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+      >
+        <AnimatePresence>
+          {filteredProjects.map((project) => (
+            <motion.div
+              key={project.id}
+              layout
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.95 }}
+              transition={{ duration: 0.4 }}
+            >
+              <ProjectCard project={project} />
+            </motion.div>
+          ))}
+        </AnimatePresence>
+      </motion.div>
+
+      {/* Bottom CTA Banner Link */}
+      <div className="mt-16 text-center">
+        <p className="text-gray-500 text-sm mb-4 font-medium">
+          Looking for custom website design or specialized SaaS engineering?
+        </p>
+        <Link
+          to="/projects"
+          className="inline-flex items-center gap-2 text-base font-bold text-[var(--color-primary)] hover:text-[var(--color-primary-dark)] transition-colors group"
+        >
+          <FolderGit2 size={18} />
+          <span className="underline decoration-2 underline-offset-4 group-hover:decoration-[var(--color-accent)]">
+            Explore Full Portfolio Archive
+          </span>
+          <ArrowRight size={16} className="transform group-hover:translate-x-1 transition-transform" />
+        </Link>
+      </div>
+
     </section>
   );
 };
