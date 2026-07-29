@@ -8,79 +8,89 @@ import {
   Sparkles, 
   CheckCircle2, 
   Clock, 
-  ArrowRight,
-  ChevronRight
+  ShieldCheck
 } from 'lucide-react';
-import { assets } from '../assets/assets';
 
 const processSteps = [
   {
     id: 1,
     stepNumber: "01",
-    phase: "PHASE 01 — STRATEGY",
-    title: "Discovery & Architecture",
-    tagline: "Understanding goals, audience psychology & technical scope.",
-    desc: "Every successful web product begins with deep research. I collaborate with you to define target audience personas, map user journeys, and establish a clear site architecture before touching design.",
+    phase: "PHASE 01 — DISCOVERY",
+    title: "Discovery & Strategy Call",
+    tagline: "Understanding your business goals, target market & website requirements.",
+    desc: "Every successful project begins with clarity. We discuss your business, target audience, competitors, and the specific goals you want your website to achieve before any design work starts.",
     outcomes: [
-      "User Persona & Competitor Audit",
-      "Information Architecture & Sitemap",
-      "Technical Scope & Stack Selection",
-      "Project Timeline & Milestones"
+      "Target Audience & Competitor Analysis",
+      "Clear Sitemap & Page Hierarchy",
+      "Functionality & Feature Specification",
+      "Fixed Project Quote & Milestone Timeline"
     ],
-    duration: "Week 1",
-    icon: Search,
-    image: assets.p1
+    duration: "Days 1 - 3",
+    icon: Search
   },
   {
     id: 2,
     stepNumber: "02",
     phase: "PHASE 02 — DESIGN",
-    title: "UI/UX & Interactive Design",
-    tagline: "Transforming concepts into high-fidelity Figma prototypes.",
-    desc: "Using the established strategy, I design intuitive wireframes and interactive prototypes. Every layout, color choice, and font pairing is meticulously crafted to match your brand identity.",
+    title: "Custom Visual Design",
+    tagline: "Crafting a clean layout tailored to your brand & customer conversion.",
+    desc: "I create custom design layouts for key pages. Every headline, button, and image placement is chosen to reflect your business's quality and guide visitors toward contacting you or purchasing.",
     outcomes: [
-      "Low-Fidelity Wireframes",
-      "High-Fidelity Figma Prototypes",
-      "Custom Design System & UI Kit",
-      "Mobile-First Responsive Layouts"
+      "Homepage & Key Page Visual Layouts",
+      "Mobile & Tablet Responsive Mockups",
+      "Brand Colors & Typography Pairing",
+      "Client Feedback & Revision Rounds"
     ],
-    duration: "Week 2 - 3",
-    icon: PenTool,
-    image: assets.p2
+    duration: "Week 1 - 2",
+    icon: PenTool
   },
   {
     id: 3,
     stepNumber: "03",
     phase: "PHASE 03 — BUILD",
-    title: "Frontend Engineering",
-    tagline: "Building clean, ultra-fast React & Next.js applications.",
-    desc: "Design mockups come to life with modern code. I write clean, modular React and Tailwind CSS components integrated with smooth scroll, micro-animations, and full mobile optimization.",
+    title: "Development & Integration",
+    tagline: "Building your website with fast speeds & easy content management.",
+    desc: "Approved designs are turned into a fully functional website. I configure easy-to-use content editing tools, mobile responsiveness, contact forms, booking systems, and store checkout flows.",
     outcomes: [
-      "Pixel-Perfect Component Architecture",
-      "Framer Motion Micro-Interactions",
-      "SEO & Core Web Vitals Optimization",
-      "API & CMS Data Integration"
+      "Pixel-Perfect Mobile & Desktop Build",
+      "Contact Forms & Booking Integration",
+      "Content Management System Setup",
+      "Fast Speed & Caching Optimization"
     ],
-    duration: "Week 4 - 5",
-    icon: Code2,
-    image: assets.p3
+    duration: "Week 2 - 3",
+    icon: Code2
   },
   {
     id: 4,
     stepNumber: "04",
     phase: "PHASE 04 — LAUNCH",
-    title: "QA Audit & Deployment",
-    tagline: "Rigorous cross-device testing & production handover.",
-    desc: "Before going live, the website undergoes rigorous cross-browser testing, accessibility checks, and performance tuning to ensure a seamless launch and high visitor conversion.",
+    title: "Testing & Smooth Go-Live",
+    tagline: "Rigorous cross-device testing, domain setup & production launch.",
+    desc: "Before going live, the website undergoes full testing across iPhones, Androids, tablets, and computers. I connect your domain name, set up SSL security, and launch the site smoothly.",
     outcomes: [
-      "Cross-Device & Browser QA Testing",
-      "Speed & Asset Optimization Audit",
-      "Domain Setup & Vercel Deployment",
-      "Post-Launch Support & Documentation"
+      "Mobile, Tablet & Desktop QA Check",
+      "SSL Security Certificate Activation",
+      "Google Search Console & Analytics Setup",
+      "Smooth Domain & Hosting Deployment"
     ],
-    duration: "Week 6",
-    icon: Rocket,
-    image: assets.p4
+    duration: "Launch Day",
+    icon: Rocket
+  },
+  {
+    id: 5,
+    stepNumber: "05",
+    phase: "PHASE 05 — SUPPORT",
+    title: "Training & Ongoing Care",
+    tagline: "Walkthrough video training & optional monthly maintenance support.",
+    desc: "After launch, I don't leave you stranded. I provide simple video instructions showing you how to update text and photos, plus optional ongoing maintenance to keep your site updated and safe.",
+    outcomes: [
+      "Custom Client Dashboard Video Guide",
+      "30 Days of Free Post-Launch Support",
+      "Backup & Security Verification",
+      "Optional Monthly Care Package"
+    ],
+    duration: "Ongoing",
+    icon: ShieldCheck
   }
 ];
 
@@ -112,13 +122,13 @@ const OurProcess = () => {
       <div className="text-center max-w-3xl mx-auto mb-16">
         <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[var(--color-primary)]/10 border border-[var(--color-primary)]/15 text-xs font-semibold uppercase tracking-widest text-[var(--color-primary)] mb-4">
           <Sparkles size={14} className="text-[var(--color-primary)]" />
-          Execution Methodology
+          Simple & Predictable Process
         </div>
 
         <h2 className="text-4xl md:text-5xl font-heading font-bold text-gray-900 leading-tight">
-          How Ideas Become <br />
+          How We Build Your Business <br />
           <span className="text-[var(--color-primary)]">
-            High-Performing Web Products.
+            Website Step by Step.
           </span>
         </h2>
       </div>
@@ -132,7 +142,7 @@ const OurProcess = () => {
         {/* =========================================
            PROGRESS TRACKER PIPELINE BAR
         ========================================= */}
-        <div className="relative max-w-4xl mx-auto px-4">
+        <div className="relative max-w-5xl mx-auto px-4">
           
           {/* Connecting Background Line */}
           <div className="absolute top-1/2 left-8 right-8 h-1 bg-gray-200 -translate-y-1/2 rounded-full z-0" />
@@ -157,14 +167,14 @@ const OurProcess = () => {
                   className="flex flex-col items-center group focus:outline-none"
                 >
                   {/* Step Node Circle */}
-                  <div className={`w-14 h-14 md:w-16 md:h-16 rounded-2xl flex items-center justify-center font-heading font-bold transition-all duration-300 shadow-md ${
+                  <div className={`w-12 h-12 md:w-16 md:h-16 rounded-2xl flex items-center justify-center font-heading font-bold transition-all duration-300 shadow-md ${
                     isActive
                       ? 'bg-[#181335] text-[var(--color-accent)] ring-4 ring-[var(--color-primary)]/20 scale-110'
                       : isPassed
                       ? 'bg-[var(--color-primary)] text-white'
                       : 'bg-white text-gray-500 border border-gray-300 group-hover:border-[var(--color-primary)] group-hover:text-[var(--color-primary)]'
                   }`}>
-                    <Icon size={24} className="transform group-hover:scale-110 transition-transform" />
+                    <Icon size={22} className="transform group-hover:scale-110 transition-transform" />
                   </div>
 
                   {/* Node Label */}
@@ -183,7 +193,7 @@ const OurProcess = () => {
         {/* =========================================
            ACTIVE STEP FEATURE SHOWCASE PANEL
         ========================================= */}
-        <div className="max-w-6xl mx-auto mt-12">
+        <div className="max-w-4xl mx-auto mt-12">
           <AnimatePresence mode="wait">
             <motion.div
               key={current.id}
@@ -191,7 +201,7 @@ const OurProcess = () => {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -25 }}
               transition={{ duration: 0.4 }}
-              className="p-8 md:p-14 rounded-3xl bg-gradient-to-br from-[#161136] via-[#1f174a] to-[#120d2c] text-white border border-white/15 shadow-2xl relative overflow-hidden grid grid-cols-1 lg:grid-cols-12 gap-10 items-center"
+              className="p-8 md:p-14 rounded-3xl bg-gradient-to-br from-[#161136] via-[#1f174a] to-[#120d2c] text-white border border-white/15 shadow-2xl relative overflow-hidden"
             >
               
               {/* Decorative Step Number Watermark */}
@@ -199,8 +209,8 @@ const OurProcess = () => {
                 {current.stepNumber}
               </span>
 
-              {/* LEFT CONTENT DETAILS (Cols 7) */}
-              <div className="lg:col-span-7 space-y-6 relative z-10">
+              {/* CONTENT DETAILS */}
+              <div className="space-y-6 relative z-10">
                 
                 {/* Phase Tag & Duration */}
                 <div className="flex items-center gap-3">
@@ -209,7 +219,7 @@ const OurProcess = () => {
                   </span>
                   <span className="inline-flex items-center gap-1.5 text-xs text-gray-300 font-medium px-3 py-1 rounded-full bg-white/10 backdrop-blur-md border border-white/15">
                     <Clock size={12} className="text-[var(--color-accent)]" />
-                    Estimated: {current.duration}
+                    Timeline: {current.duration}
                   </span>
                 </div>
 
@@ -222,14 +232,14 @@ const OurProcess = () => {
                   "{current.tagline}"
                 </p>
 
-                <p className="text-gray-300 text-base leading-relaxed">
+                <p className="text-gray-300 text-base leading-relaxed max-w-2xl">
                   {current.desc}
                 </p>
 
-                {/* Phase Outcomes List */}
-                <div className="pt-4 border-t border-white/10 space-y-3">
+                {/* Phase Deliverables List */}
+                <div className="pt-6 border-t border-white/10 space-y-3">
                   <h4 className="text-xs font-semibold uppercase tracking-wider text-gray-400">
-                    Phase Key Outcomes:
+                    What You Receive In This Step:
                   </h4>
 
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
@@ -242,29 +252,6 @@ const OurProcess = () => {
                   </div>
                 </div>
 
-              </div>
-
-              {/* RIGHT SIDE: Interactive Image Mockup Box (Cols 5) */}
-              <div className="lg:col-span-5 relative z-10">
-                <div className="relative rounded-2xl overflow-hidden bg-gray-900 border border-white/20 shadow-2xl aspect-[4/3] group">
-                  <img
-                    src={current.image}
-                    alt={current.title}
-                    className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700"
-                  />
-
-                  {/* Gradient Overlay */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent pointer-events-none" />
-
-                  {/* Overlay Badge */}
-                  <div className="absolute bottom-4 left-4 right-4 p-3 rounded-xl bg-black/60 backdrop-blur-md border border-white/15 flex items-center justify-between text-xs text-white">
-                    <span className="font-semibold flex items-center gap-1.5">
-                      <Sparkles size={14} className="text-[var(--color-accent)]" />
-                      Step {current.stepNumber} Artifacts
-                    </span>
-                    <span className="text-[var(--color-accent)] font-bold">Verified Workflow</span>
-                  </div>
-                </div>
               </div>
 
             </motion.div>
@@ -282,7 +269,7 @@ const OurProcess = () => {
                   ? 'w-10 bg-[var(--color-primary)]' 
                   : 'w-2.5 bg-gray-300 hover:bg-gray-400'
               }`}
-              aria-label={`Go to phase ${idx + 1}`}
+              aria-label={`Go to step ${idx + 1}`}
             />
           ))}
         </div>

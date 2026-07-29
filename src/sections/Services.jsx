@@ -5,7 +5,9 @@ import {
   Sparkles, 
   CheckCircle2, 
   ArrowUpRight,
-  MoveRight
+  MoveRight,
+  TrendingUp,
+  Target
 } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { servicesData } from '../data/services';
@@ -28,20 +30,20 @@ const Services = () => {
         <div className="max-w-2xl">
           <div className="inline-flex items-center gap-2.5 px-4 py-2 rounded-full bg-[var(--color-primary)]/10 border border-[var(--color-primary)]/15 text-xs font-semibold uppercase tracking-widest text-[var(--color-primary)] mb-4">
             <Sparkles size={14} className="text-[var(--color-primary)]" />
-            Interactive Capabilities
+            Web Solutions For Growth
           </div>
 
           <h2 className="text-4xl md:text-6xl font-heading font-bold text-gray-900 leading-[1.1]">
-            Tailored Web Solutions <br />
+            Everything Your Business <br />
             <span className="text-[var(--color-primary)]">
-              Crafted for Digital Leaders.
+              Needs to Succeed Online.
             </span>
           </h2>
         </div>
 
         <Link
           to="/services"
-          className="inline-flex items-center gap-2.5 px-7 py-4 rounded-full font-heading font-semibold text-white bg-[var(--color-primary)] hover:bg-[var(--color-accent)] hover:text-black transition-all duration-300 shadow-lg transform hover:-translate-y-0.5 shrink-0"
+          className="inline-flex items-center gap-2.5 px-7 py-4 rounded-full font-heading font-semibold text-white bg-[var(--color-primary)] hover:bg-[var(--color-primary-dark)] transition-all duration-300 shadow-lg transform hover:-translate-y-0.5 shrink-0"
         >
           <span>Explore All Services</span>
           <ArrowRight size={18} />
@@ -57,20 +59,19 @@ const Services = () => {
         <div className="lg:col-span-5 flex flex-col justify-between space-y-3">
           {servicesData.map((service, idx) => {
             const isActive = activeIndex === idx;
-            const Icon = service.icon;
 
             return (
               <div
                 key={service.id}
                 onClick={() => setActiveIndex(idx)}
                 onMouseEnter={() => setActiveIndex(idx)}
-                className={`group cursor-pointer p-6 rounded-2xl transition-all duration-300 flex items-center justify-between border ${
+                className={`group cursor-pointer p-5 md:p-6 rounded-2xl transition-all duration-300 flex items-center justify-between border ${
                   isActive
                     ? 'bg-[#120e29] text-white border-[var(--color-primary)]/50 shadow-xl scale-[1.02]'
                     : 'bg-white text-gray-800 border-gray-200/80 hover:border-gray-300 hover:bg-gray-50/80'
                 }`}
               >
-                <div className="flex items-center gap-5">
+                <div className="flex items-center gap-4">
                   {/* Number Badge */}
                   <span className={`text-base font-heading font-bold transition-colors ${
                     isActive ? 'text-[var(--color-accent)]' : 'text-gray-400 group-hover:text-gray-900'
@@ -79,7 +80,7 @@ const Services = () => {
                   </span>
 
                   {/* Title */}
-                  <h3 className={`text-xl font-heading font-bold transition-colors ${
+                  <h3 className={`text-lg md:text-xl font-heading font-bold transition-colors ${
                     isActive ? 'text-white' : 'text-gray-900 group-hover:text-[var(--color-primary)]'
                   }`}>
                     {service.title}
@@ -87,7 +88,7 @@ const Services = () => {
                 </div>
 
                 {/* Arrow / Icon Indicator */}
-                <div className={`w-10 h-10 rounded-full flex items-center justify-center transition-all ${
+                <div className={`w-9 h-9 rounded-full flex items-center justify-center transition-all shrink-0 ${
                   isActive 
                     ? 'bg-[var(--color-accent)] text-black rotate-0' 
                     : 'bg-gray-100 text-gray-500 group-hover:bg-[var(--color-primary)] group-hover:text-white -rotate-45'
@@ -122,7 +123,7 @@ const Services = () => {
                   </div>
 
                   <span className="px-4 py-1.5 rounded-full bg-white/10 border border-white/15 text-xs font-semibold text-[var(--color-accent)] backdrop-blur-md">
-                    Featured Service #{activeService.id}
+                    Targeted Solution #{activeService.id}
                   </span>
                 </div>
 
@@ -136,10 +137,11 @@ const Services = () => {
                   {activeService.fullDesc}
                 </p>
 
-                {/* Key Deliverables Grid */}
+                {/* Key Business Benefits */}
                 <div className="mb-8 pt-6 border-t border-white/10">
-                  <h4 className="text-xs font-semibold uppercase tracking-wider text-[var(--color-accent)] mb-4">
-                    Key Deliverables & Execution
+                  <h4 className="text-xs font-semibold uppercase tracking-wider text-[var(--color-accent)] mb-4 flex items-center gap-2">
+                    <Target size={14} />
+                    What This Does For Your Business
                   </h4>
 
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -151,20 +153,21 @@ const Services = () => {
                     ))}
                   </div>
                 </div>
+
+                {/* Bottom Highlight */}
+                {activeService.businessBenefit && (
+                  <div className="p-4 rounded-xl bg-white/5 border border-white/10 mb-8 flex items-center gap-3 text-sm text-[var(--color-accent)] font-semibold">
+                    <TrendingUp size={18} className="shrink-0" />
+                    <span>Bottom Line: {activeService.businessBenefit}</span>
+                  </div>
+                )}
               </div>
 
-              {/* Footer: Tech Stack & CTA */}
+              {/* Footer: Ideal For & CTA */}
               <div className="pt-6 border-t border-white/10 flex flex-col sm:flex-row sm:items-center justify-between gap-6">
-                {/* Tech Pills */}
-                <div className="flex flex-wrap gap-2">
-                  {activeService.tools.map((tool, idx) => (
-                    <span 
-                      key={idx} 
-                      className="px-3 py-1 rounded-full bg-white/10 text-white text-xs font-medium border border-white/15"
-                    >
-                      {tool}
-                    </span>
-                  ))}
+                <div className="text-xs text-gray-400">
+                  <span className="block text-gray-500 uppercase font-semibold text-[10px] tracking-wider mb-1">Ideal For:</span>
+                  <span className="text-gray-200 font-medium">{activeService.idealFor}</span>
                 </div>
 
                 {/* Direct Action Link */}
@@ -172,7 +175,7 @@ const Services = () => {
                   to="/contact"
                   className="inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-full font-heading font-semibold text-black bg-[var(--color-accent)] hover:bg-white transition-all duration-300 shadow-xl shrink-0 transform hover:-translate-y-0.5"
                 >
-                  <span>Start This Project</span>
+                  <span>Book a Project Call</span>
                   <ArrowUpRight size={18} />
                 </Link>
               </div>

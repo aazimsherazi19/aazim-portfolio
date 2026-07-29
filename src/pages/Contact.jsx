@@ -1,50 +1,64 @@
 import React, { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion } from 'framer-motion';
 import { 
   Mail, 
   MapPin, 
-  Clock, 
   Send, 
   CheckCircle2, 
   User, 
   MessageSquare, 
   Sparkles, 
   HelpCircle, 
-  ArrowRight,
   Copy,
   Check,
   Zap,
-  Globe
+  PhoneCall,
+  Clock,
+  ShieldCheck
 } from 'lucide-react';
 
 const projectTypes = [
-  "Web Design & UI/UX",
-  "React / Next.js Development",
-  "E-Commerce Store",
-  "SaaS Dashboard",
-  "Full Brand Identity",
-  "Other Inquiry"
+  "Business Website",
+  "eCommerce Store",
+  "Booking / Appointment Site",
+  "Website Redesign",
+  "Healthcare / Clinic Site",
+  "Landing Page",
+  "Maintenance & Speed Fix",
+  "Custom Web Application"
 ];
 
 const budgetRanges = [
-  "Under $1,000",
-  "$1,000 - $3,000",
-  "$3,000 - $5,000",
-  "$5,000+"
+  "Starting from $500",
+  "$500 - $1,500",
+  "$1,500 - $3,000",
+  "$3,000+"
 ];
 
 const faqs = [
   {
-    q: "What is your typical turnaround time for a website project?",
-    a: "Standard landing pages take 1-2 weeks, while full custom web applications or complex e-commerce platforms typically take 3-5 weeks depending on scope."
-  },
-  {
-    q: "Do you work with international clients?",
-    a: "Yes! I work with founders, startups, and agency teams globally across North America, Europe, Asia, and the Middle East."
+    q: "How long does a typical website project take?",
+    a: "Standard business websites and landing pages take 1 to 2 weeks. Full eCommerce stores, booking portals, or complex custom applications typically take 2 to 4 weeks depending on requirements and content availability."
   },
   {
     q: "What do you need from me to get started?",
-    a: "Brief project overview, brand guidelines or inspiration sites (if any), desired launch deadline, and budget expectations."
+    a: "A brief overview of your business, your target customers, logo/branding assets (if you have them), and examples of websites you like. If you don't have text or photos ready, I can help guide you."
+  },
+  {
+    q: "Do you redesign existing websites?",
+    a: "Yes! If your current website is outdated, slow, or not bringing in leads, I can rebuild it with a modern design, faster loading speeds, and better mobile optimization while preserving your existing domain and Google rankings."
+  },
+  {
+    q: "Can I easily update text and photos myself after launch?",
+    a: "Absolutely. I set up user-friendly dashboards (such as WordPress) and provide short video walkthroughs showing you exactly how to edit text, upload photos, add blog posts, or update products without needing technical skills."
+  },
+  {
+    q: "Do you offer ongoing website maintenance and security?",
+    a: "Yes. I offer monthly care packages that cover security updates, plugin maintenance, regular backups, and content updates so you never have to worry about your site breaking or going offline."
+  },
+  {
+    q: "Do you work with international clients?",
+    a: "Yes! I am based in Pakistan and work with business owners, clinics, local services, and founders globally across North America, Europe, the Middle East, and Asia via email, Zoom, or WhatsApp."
   }
 ];
 
@@ -53,8 +67,8 @@ const ContactPage = () => {
     name: '',
     email: '',
     phone: '',
-    projectType: 'Web Design & UI/UX',
-    budget: '$1,000 - $3,000',
+    projectType: 'Business Website',
+    budget: '$500 - $1,500',
     message: ''
   });
 
@@ -88,12 +102,12 @@ const ContactPage = () => {
         </div>
 
         <h1 className="text-4xl md:text-6xl font-heading font-bold text-gray-900 leading-tight mb-6">
-          Have a Project in Mind? <br />
-          <span className="text-[var(--color-primary)]">Let's Build Something Great.</span>
+          Let's Talk About Your <br />
+          <span className="text-[var(--color-primary)]">Website Project</span>
         </h1>
 
         <p className="text-gray-600 text-lg leading-relaxed">
-          Whether you need a complete redesign, custom SaaS dashboard, or frontend engineering, I'm here to bring your vision to life.
+          Tell me about your business goals and what you need. I'll get back to you with initial thoughts, project recommendations, and a clear price estimate.
         </p>
       </section>
 
@@ -116,21 +130,27 @@ const ContactPage = () => {
                   <span className="relative inline-flex rounded-full h-3 w-3 bg-green-500"></span>
                 </span>
                 <span className="text-xs font-semibold uppercase tracking-wider text-[var(--color-accent)]">
-                  Currently Available for Booking
+                  Currently Booking New Projects
                 </span>
               </div>
 
               <h3 className="text-2xl font-heading font-bold text-white mb-3">
-                Ready for New Projects
+                Ready for Business Client Projects
               </h3>
 
               <p className="text-gray-300 text-sm leading-relaxed mb-6">
-                Accepting freelance design, full website builds, and contract frontend development positions for Q3/Q4.
+                Accepting new website builds, eCommerce store setups, and redesign projects. Projects starting from $500.
               </p>
 
-              <div className="flex items-center gap-2 text-xs text-gray-400 pt-4 border-t border-white/10">
-                <Zap size={14} className="text-[var(--color-accent)]" />
-                <span>Typical response time: Within 12–24 hours</span>
+              <div className="space-y-3 pt-4 border-t border-white/10 text-xs text-gray-300">
+                <div className="flex items-center gap-2">
+                  <Clock size={14} className="text-[var(--color-accent)]" />
+                  <span>Response time: Within 12–24 hours</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <ShieldCheck size={14} className="text-[var(--color-accent)]" />
+                  <span>Fixed scope & transparent pricing</span>
+                </div>
               </div>
             </div>
 
@@ -169,10 +189,10 @@ const ContactPage = () => {
                 </div>
                 <div>
                   <span className="text-xs font-semibold text-gray-400 uppercase tracking-wider block">
-                    Location & Remote Scope
+                    Location & Scope
                   </span>
                   <p className="text-base font-bold text-gray-900">
-                    Pakistan — Available Worldwide
+                    Pakistan — Serving Clients Worldwide
                   </p>
                 </div>
               </div>
@@ -230,21 +250,21 @@ const ContactPage = () => {
                   </div>
 
                   <h3 className="text-3xl font-heading font-bold text-gray-900">
-                    Message Sent Successfully!
+                    Project Inquiry Sent!
                   </h3>
 
                   <p className="text-gray-600 text-base max-w-md mx-auto">
-                    Thank you <strong className="text-gray-900">{formData.name}</strong> for reaching out! I have received your message and will get back to you within 24 hours.
+                    Thank you <strong className="text-gray-900">{formData.name}</strong> for reaching out! I have received your message and will respond with initial thoughts and pricing within 24 hours.
                   </p>
 
                   <button
                     onClick={() => {
                       setSubmitted(false);
-                      setFormData({ name: '', email: '', phone: '', projectType: 'Web Design & UI/UX', budget: '$1,000 - $3,000', message: '' });
+                      setFormData({ name: '', email: '', phone: '', projectType: 'Business Website', budget: '$500 - $1,500', message: '' });
                     }}
                     className="inline-flex items-center gap-2 px-8 py-3.5 rounded-full font-heading font-semibold text-white bg-[var(--color-primary)] hover:bg-[var(--color-primary-dark)] transition-colors shadow-md"
                   >
-                    <span>Send Another Message</span>
+                    <span>Send Another Inquiry</span>
                   </button>
                 </motion.div>
               ) : (
@@ -252,17 +272,17 @@ const ContactPage = () => {
                 <form onSubmit={handleSubmit} className="space-y-8">
                   <div>
                     <h3 className="text-2xl font-heading font-bold text-gray-900 mb-2">
-                      Send Me a Message
+                      Send a Project Inquiry
                     </h3>
                     <p className="text-gray-600 text-sm">
-                      Fill out the form below and I'll respond with initial project thoughts and timeline options.
+                      Fill out the details below and I'll respond with initial recommendations, timeline options, and a quote.
                     </p>
                   </div>
 
                   {/* Project Type Selection Chips */}
                   <div className="space-y-3">
                     <label className="text-xs font-semibold uppercase tracking-wider text-gray-500 block">
-                      1. What service do you need?
+                      1. What service does your business need?
                     </label>
                     <div className="flex flex-wrap gap-2">
                       {projectTypes.map((type) => (
@@ -285,7 +305,7 @@ const ContactPage = () => {
                   {/* Budget Selection Chips */}
                   <div className="space-y-3">
                     <label className="text-xs font-semibold uppercase tracking-wider text-gray-500 block">
-                      2. Estimated Budget Range
+                      2. Estimated Budget Expectation
                     </label>
                     <div className="flex flex-wrap gap-2">
                       {budgetRanges.map((b) => (
@@ -311,14 +331,14 @@ const ContactPage = () => {
                     <div className="space-y-2">
                       <label className="text-xs font-semibold text-gray-700 flex items-center gap-1.5">
                         <User size={14} className="text-[var(--color-primary)]" />
-                        <span>Your Full Name *</span>
+                        <span>Your Full Name / Company Name *</span>
                       </label>
                       <input
                         type="text"
                         required
                         value={formData.name}
                         onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                        placeholder="John Doe"
+                        placeholder="John Doe / Acme Co."
                         className="w-full px-4 py-3.5 rounded-2xl bg-gray-50 border border-gray-200 text-gray-900 text-sm focus:outline-none focus:border-[var(--color-primary)] focus:ring-1 focus:ring-[var(--color-primary)] transition-all"
                       />
                     </div>
@@ -344,14 +364,14 @@ const ContactPage = () => {
                   <div className="space-y-2">
                     <label className="text-xs font-semibold text-gray-700 flex items-center gap-1.5">
                       <MessageSquare size={14} className="text-[var(--color-primary)]" />
-                      <span>Project Details & Goals *</span>
+                      <span>Tell Me About Your Business & Goals *</span>
                     </label>
                     <textarea
                       required
                       rows={5}
                       value={formData.message}
                       onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                      placeholder="Tell me about your project, target audience, key features, and timeline expectations..."
+                      placeholder="Describe your business, target audience, key features you need, current website URL (if any), and desired timeframe..."
                       className="w-full px-4 py-3.5 rounded-2xl bg-gray-50 border border-gray-200 text-gray-900 text-sm focus:outline-none focus:border-[var(--color-primary)] focus:ring-1 focus:ring-[var(--color-primary)] transition-all resize-none"
                     />
                   </div>
@@ -359,14 +379,14 @@ const ContactPage = () => {
                   {/* Submit Button */}
                   <button
                     type="submit"
-                    className="w-full inline-flex items-center justify-center gap-3 px-8 py-4 rounded-full font-heading font-semibold text-white bg-[var(--color-primary)] hover:bg-[var(--color-accent)] hover:text-black transition-all duration-300 shadow-xl shadow-[var(--color-primary)]/20 transform hover:-translate-y-0.5"
+                    className="w-full inline-flex items-center justify-center gap-3 px-8 py-4 rounded-full font-heading font-semibold text-white bg-[var(--color-primary)] hover:bg-[var(--color-primary-dark)] transition-all duration-300 shadow-xl shadow-[var(--color-primary)]/20 transform hover:-translate-y-0.5"
                   >
-                    <span>Send Message</span>
+                    <span>Send Project Inquiry</span>
                     <Send size={18} />
                   </button>
 
                   <p className="text-center text-xs text-gray-400">
-                    🔒 Your information is confidential and will never be shared.
+                    🔒 Confidential submission. No sales calls, spam, or shared details.
                   </p>
 
                 </form>

@@ -3,10 +3,10 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { projectsData } from '../data/projects';
 import ProjectCard from '../components/ui/ProjectCard';
 import PortfolioGridSection from '../sections/PortfolioGrid';
-import { FolderGit2, Sparkles, Layers, ArrowUpRight } from 'lucide-react';
+import { FolderGit2, Sparkles, ArrowUpRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
-const categories = ['All', 'E-Commerce', 'SaaS', 'Web Design', 'Fintech'];
+const categories = ['All', 'Healthcare', 'eCommerce', 'Restaurant', 'Real Estate', 'Landing Page', 'Booking'];
 
 const ProjectsPage = () => {
   const [activeCategory, setActiveCategory] = useState('All');
@@ -24,16 +24,16 @@ const ProjectsPage = () => {
       <section className="container-custom text-center max-w-3xl mx-auto mb-16 px-6">
         <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[var(--color-primary)]/10 border border-[var(--color-primary)]/15 text-xs font-semibold uppercase tracking-widest text-[var(--color-primary)] mb-6">
           <FolderGit2 size={16} />
-          Selected Portfolio Work
+          Client Case Studies
         </div>
 
         <h1 className="text-4xl md:text-6xl font-heading font-bold text-gray-900 leading-tight mb-6">
-          Featured Projects & <br />
-          <span className="text-[var(--color-primary)]">Digital Case Studies</span>
+          Real Websites Built for <br />
+          <span className="text-[var(--color-primary)]">Real Business Growth</span>
         </h1>
 
         <p className="text-gray-600 text-lg leading-relaxed">
-          A showcase of custom web applications, SaaS dashboards, and high-conversion e-commerce websites designed to solve real business challenges.
+          Explore case studies of custom business websites, online stores, booking systems, and landing pages designed to solve real business challenges.
         </p>
       </section>
 
@@ -99,21 +99,21 @@ const ProjectsPage = () => {
             </span>
 
             <h2 className="text-3xl md:text-5xl font-heading font-bold mb-4 text-white leading-tight">
-              Let's turn your vision into a <br />
+              Ready to get a website that <br />
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-white via-purple-200 to-[var(--color-accent)]">
-                high-converting reality.
+                brings in more customers?
               </span>
             </h2>
 
             <p className="text-gray-300 text-base md:text-lg mb-8 max-w-xl mx-auto">
-              Whether you need a complete redesign, custom SaaS web app, or frontend development, I'm here to bring your ideas to life.
+              Whether you need a new website from scratch or a complete redesign, I'm here to build a solution for your business.
             </p>
 
             <Link
               to="/contact"
               className="inline-flex items-center gap-3 px-8 py-4 rounded-full font-heading font-semibold text-black bg-[var(--color-accent)] hover:bg-white transition-all duration-300 shadow-xl transform hover:-translate-y-1"
             >
-              <span>Start Your Project Today</span>
+              <span>Get a Free Quote & Consultation</span>
               <ArrowUpRight size={20} />
             </Link>
           </div>

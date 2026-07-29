@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ArrowLeft, ArrowRight, Sparkles, Quote, Award } from 'lucide-react';
+import { ArrowLeft, ArrowRight, Sparkles, Award } from 'lucide-react';
 import { testimonialsData } from '../data/testimonials';
 import TestimonialCard from '../components/ui/TestimonialCard';
 
@@ -68,7 +68,6 @@ const Testimonials = () => {
       <div className="absolute bottom-10 left-10 w-96 h-96 bg-[var(--color-accent)]/10 rounded-full blur-3xl pointer-events-none" />
 
       <div 
-        className="onMouseEnter" 
         onMouseEnter={() => setIsAutoplay(false)} 
         onMouseLeave={() => setIsAutoplay(true)}
       >
@@ -78,13 +77,13 @@ const Testimonials = () => {
             {/* Badge */}
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[var(--color-primary)]/10 border border-[var(--color-primary)]/15 text-xs font-semibold uppercase tracking-widest text-[var(--color-primary)] mb-4">
               <Sparkles size={14} className="text-[var(--color-primary)]" />
-              Client Endorsements
+              Client Feedback
             </div>
 
             <h2 className="text-4xl md:text-5xl font-heading font-bold text-gray-900 leading-tight">
-              Trusted by Clients, <br />
+              Trusted by Business Owners, <br />
               <span className="text-[var(--color-primary)]">
-                Loved for Exceptional Work.
+                Delivering Results That Matter.
               </span>
             </h2>
           </div>
@@ -152,12 +151,12 @@ const Testimonials = () => {
           <div className="flex items-center gap-8 text-sm text-gray-600 font-medium">
             <div className="flex items-center gap-2">
               <Award size={18} className="text-[var(--color-primary)]" />
-              <span><strong>100%</strong> Satisfaction Rate</span>
+              <span><strong>100%</strong> On-Time Delivery</span>
             </div>
             <div className="hidden sm:block w-1.5 h-1.5 rounded-full bg-gray-300" />
             <div className="flex items-center gap-2">
               <span className="text-[var(--color-accent)] font-bold bg-black text-xs px-2 py-0.5 rounded">5.0 ★</span>
-              <span>Top Rated Designer</span>
+              <span>Top Rated Developer</span>
             </div>
           </div>
 

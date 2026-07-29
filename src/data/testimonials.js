@@ -1,37 +1,40 @@
 import { assets } from '../assets/assets';
 
+// NOTE: These are placeholder slots for real client testimonials.
+// Replace with actual reviews from clients once collected.
+
 export const testimonialsData = [
   {
     id: 1,
-    title: "Stunning Results & Flawless UX!",
-    content: "From start to finish, Aazim exceeded our expectations. His ability to blend aesthetics with high-performance design is unmatched. Our conversion rate increased significantly after the launch.",
-    author: "James Taylor",
-    role: "Studio Director",
-    company: "Taylor's Studio",
+    title: "Our website now brings us new clients every week",
+    content: "Before working with Aazim, we had no online presence at all. Within days of the new website going live, we started getting calls from people who found us on Google. The website is clean, professional, and exactly what our clinic needed.",
+    author: "Dr. Sarah Ahmed",
+    role: "Clinic Owner",
+    company: "Private Medical Practice",
     rating: 5,
     image: assets.t1,
-    projectType: "Full Website Redesign"
+    projectType: "Healthcare Website"
   },
   {
     id: 2,
-    title: "Outstanding & Creative Engineer",
-    content: "Working with Aazim has been an absolute pleasure. He brought our complex SaaS vision to life with innovative micro-interactions and a truly seamless responsive user experience.",
-    author: "Sarah Johnson",
-    role: "Founder & CEO",
-    company: "Artisan Co.",
+    title: "Our online store runs itself — we just ship orders",
+    content: "Setting up an online store felt overwhelming until we hired Aazim. He built everything from scratch, explained how to manage it, and was available whenever we had questions. Our customers love how easy it is to shop. Highly recommended.",
+    author: "Fatima Malik",
+    role: "Business Owner",
+    company: "Local Clothing Brand",
     rating: 5,
     image: assets.t2,
-    projectType: "SaaS Product Design"
+    projectType: "eCommerce Store"
   },
   {
     id: 3,
-    title: "Exceptional Modern Design",
-    content: "The attention to detail, sleek animations, and professional communication were refreshing. Highly recommended for any brand looking for a modern, high-converting digital experience.",
-    author: "Michael Chen",
-    role: "Chief Technology Officer",
-    company: "TechFlow Labs",
+    title: "Customers find us easily and bookings have increased",
+    content: "Aazim built us a restaurant website that looks great and works perfectly on phones. Customers can see our menu, book a table, and find our location without any hassle. The whole process was smooth and professional from start to finish.",
+    author: "Bilal Hassan",
+    role: "Restaurant Owner",
+    company: "Gourmet Kitchen",
     rating: 5,
     image: assets.t3,
-    projectType: "Web App & Brand Identity"
+    projectType: "Restaurant Website"
   }
 ];

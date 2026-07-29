@@ -3,6 +3,7 @@ import Hero from '../sections/Hero.jsx'
 import Marquee from '../components/ui/Marquee.jsx'
 import About from '../sections/About.jsx'
 import Services from '../sections/Services.jsx'
+import WhyChooseMe from '../sections/WhyChooseMe.jsx'
 import OurProcess from '../sections/OurProcess.jsx'
 import Projects from '../sections/Projects.jsx'
 import Testimonials from '../sections/Testimonials.jsx'
@@ -15,6 +16,7 @@ const Home = () => {
       <Marquee/>
       <About/>
       <Services/>
+      <WhyChooseMe/>
       <OurProcess/>
       <Projects/>
       <Testimonials/>

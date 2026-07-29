@@ -1,12 +1,12 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { Link } from 'react-router-dom'
 import { 
   ArrowUpRight, 
   ArrowUp, 
   Mail, 
   MapPin, 
-  Send, 
   Sparkles,
+  PhoneCall,
   CheckCircle2
 } from 'lucide-react'
 
@@ -32,36 +32,7 @@ const TwitterIcon = ({ size = 18, className = "" }) => (
   </svg>
 )
 
-const DribbbleIcon = ({ size = 18, className = "" }) => (
-  <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}>
-    <circle cx="12" cy="12" r="10" />
-    <path d="M19.13 5.09C15.22 9.14 10 10.44 2.25 10.94" />
-    <path d="M21.75 12.84c-6.62-1.41-12.14 1-16.38 6.32" />
-    <path d="M8.56 2.75c4.37 6 6 9.42 8 17.72" />
-  </svg>
-)
-
-const InstagramIcon = ({ size = 18, className = "" }) => (
-  <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}>
-    <rect width="20" height="20" x="2" y="2" rx="5" ry="5" />
-    <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
-    <line x1="17.5" x2="17.51" y1="6.5" y2="6.5" />
-  </svg>
-)
-
 const Footer = () => {
-  const [email, setEmail] = useState('')
-  const [subscribed, setSubscribed] = useState(false)
-
-  const handleSubscribe = (e) => {
-    e.preventDefault()
-    if (email.trim()) {
-      setSubscribed(true)
-      setEmail('')
-      setTimeout(() => setSubscribed(false), 4000)
-    }
-  }
-
   const scrollToTop = () => {
     window.scrollTo({
       top: 0,
@@ -75,24 +46,21 @@ const Footer = () => {
     { name: 'Services', path: '/services' },
     { name: 'Projects', path: '/projects' },
     { name: 'Testimonials', path: '/testimonials' },
-    { name: 'Blogs', path: '/blogs' },
     { name: 'Contact', path: '/contact' },
   ]
 
   const servicesLinks = [
-    { name: 'UI/UX Design', path: '/services' },
-    { name: 'Web Development', path: '/services' },
-    { name: 'Branding & Identity', path: '/services' },
-    { name: 'Motion & Animation', path: '/services' },
-    { name: 'Frontend Architecture', path: '/services' },
+    { name: 'Business Website Development', path: '/services' },
+    { name: 'eCommerce & Online Stores', path: '/services' },
+    { name: 'Booking & Appointment Websites', path: '/services' },
+    { name: 'Healthcare & Clinic Websites', path: '/services' },
+    { name: 'Website Redesign & Speed Fixes', path: '/services' },
   ]
 
   const socialLinks = [
     { name: 'GitHub', icon: GithubIcon, url: 'https://github.com' },
     { name: 'LinkedIn', icon: LinkedinIcon, url: 'https://linkedin.com' },
     { name: 'Twitter', icon: TwitterIcon, url: 'https://twitter.com' },
-    { name: 'Dribbble', icon: DribbbleIcon, url: 'https://dribbble.com' },
-    { name: 'Instagram', icon: InstagramIcon, url: 'https://instagram.com' },
   ]
 
   return (
@@ -101,7 +69,7 @@ const Footer = () => {
       <div className="absolute top-0 left-1/4 w-96 h-96 bg-[var(--color-primary)]/15 rounded-full blur-3xl pointer-events-none" />
       <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-[var(--color-accent)]/10 rounded-full blur-3xl pointer-events-none" />
       
-      {/* Subtle Grid Overlay Background */}
+      {/* Grid Overlay Background */}
       <div 
         className="absolute inset-0 opacity-[0.03] pointer-events-none" 
         style={{ 
@@ -116,7 +84,6 @@ const Footer = () => {
            CALL TO ACTION CARD
         ========================================= */}
         <div className="relative mb-20 p-8 md:p-14 rounded-[32px] bg-gradient-to-r from-[#181335] via-[#221a47] to-[#181335] border border-white/10 shadow-2xl overflow-hidden group">
-          {/* Animated Ambient Light */}
           <div className="absolute -right-20 -bottom-20 w-80 h-80 bg-[var(--color-accent)]/20 rounded-full blur-3xl group-hover:scale-125 transition-transform duration-700 pointer-events-none" />
           <div className="absolute -left-20 -top-20 w-80 h-80 bg-[var(--color-primary)]/30 rounded-full blur-3xl group-hover:scale-125 transition-transform duration-700 pointer-events-none" />
 
@@ -128,18 +95,18 @@ const Footer = () => {
                   <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[var(--color-accent)] opacity-75"></span>
                   <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-[var(--color-accent)]"></span>
                 </span>
-                Available for Freelance & Full-time Roles
+                Ready for New Client Projects
               </div>
 
               <h2 className="text-3xl md:text-5xl font-heading font-bold text-white tracking-tight leading-tight mb-4">
-                Have a vision in mind? <br />
+                Ready to get more customers? <br />
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-white via-purple-200 to-[var(--color-accent)]">
-                  Let's build something extraordinary.
+                  Let me build your business website.
                 </span>
               </h2>
 
               <p className="text-gray-300 text-base md:text-lg max-w-xl">
-                Ready to elevate your digital presence? Reach out today and let's craft a captivating experience for your brand.
+                Get a high-quality, conversion-optimized website tailored to your business goals. Free initial consultation and project estimate.
               </p>
             </div>
 
@@ -148,9 +115,9 @@ const Footer = () => {
               <Link 
                 to="/contact"
                 onClick={scrollToTop}
-                className="w-full sm:w-auto inline-flex items-center justify-center gap-3 px-8 py-4 rounded-full font-heading font-semibold text-black bg-[var(--color-accent)] hover:bg-white hover:shadow-[0_0_25px_rgba(198,255,0,0.4)] transition-all duration-300 transform hover:-translate-y-1"
+                className="w-full sm:w-auto inline-flex items-center justify-center gap-3 px-8 py-4 rounded-full font-heading font-semibold text-black bg-[var(--color-accent)] hover:bg-white transition-all duration-300 transform hover:-translate-y-1 shadow-lg"
               >
-                <span>Start a Project</span>
+                <span>Get a Free Quote</span>
                 <ArrowUpRight size={20} />
               </Link>
               
@@ -181,7 +148,7 @@ const Footer = () => {
             </Link>
 
             <p className="text-gray-400 text-base leading-relaxed max-w-sm">
-              Passionate Web Designer & Frontend Developer dedicated to creating visually stunning, user-centered digital solutions that drive results.
+              Professional web developer building high-converting websites for small businesses, clinics, restaurants, and eCommerce brands.
             </p>
 
             {/* Social Icons */}
@@ -256,49 +223,20 @@ const Footer = () => {
             </ul>
           </div>
 
-          {/* Newsletter / Contact Quick Info (Cols 3) */}
+          {/* Direct Contact Info (Cols 3) */}
           <div className="lg:col-span-3 space-y-6">
             <h3 className="text-lg font-heading font-semibold text-white tracking-wide">
-              Stay Connected
+              Get In Touch
             </h3>
             
             <p className="text-gray-400 text-sm leading-relaxed">
-              Subscribe to get notified about new projects, insights, and web design updates.
+              Have a project in mind or want a free quote? Send me a message anytime.
             </p>
 
-            {/* Newsletter Input */}
-            <form onSubmit={handleSubscribe} className="space-y-3">
-              <div className="relative">
-                <input
-                  type="email"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  placeholder="Enter your email"
-                  required
-                  className="w-full px-4 py-3.5 pr-12 rounded-2xl bg-white/5 border border-white/10 text-white placeholder-gray-500 focus:outline-none focus:border-[var(--color-accent)] focus:ring-1 focus:ring-[var(--color-accent)] transition-all duration-300 text-sm"
-                />
-                <button
-                  type="submit"
-                  aria-label="Subscribe"
-                  className="absolute right-1.5 top-1.5 bottom-1.5 px-3.5 rounded-xl bg-[var(--color-primary)] text-white hover:bg-[var(--color-accent)] hover:text-black transition-colors duration-300 flex items-center justify-center"
-                >
-                  <Send size={16} />
-                </button>
-              </div>
-
-              {subscribed && (
-                <div className="flex items-center gap-2 text-xs text-[var(--color-accent)] font-medium pt-1 animate-fade-in">
-                  <CheckCircle2 size={14} />
-                  <span>Thanks for subscribing!</span>
-                </div>
-              )}
-            </form>
-
-            {/* Direct Contact details */}
-            <div className="pt-2 space-y-2.5 text-sm text-gray-400">
+            <div className="space-y-3 text-sm text-gray-300">
               <div className="flex items-center gap-3">
                 <MapPin size={16} className="text-[var(--color-accent)] shrink-0" />
-                <span>Pakistan — Available Worldwide</span>
+                <span>Pakistan — Serving Worldwide</span>
               </div>
               <div className="flex items-center gap-3">
                 <Mail size={16} className="text-[var(--color-accent)] shrink-0" />
@@ -306,7 +244,20 @@ const Footer = () => {
                   aazim.dev@gmail.com
                 </a>
               </div>
+              <div className="flex items-center gap-3">
+                <PhoneCall size={16} className="text-[var(--color-accent)] shrink-0" />
+                <span>Available for Discovery Calls</span>
+              </div>
             </div>
+
+            <Link
+              to="/contact"
+              onClick={scrollToTop}
+              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-white/10 text-white hover:bg-[var(--color-accent)] hover:text-black font-semibold text-xs transition-all duration-300"
+            >
+              <span>Contact Page & FAQ</span>
+              <ArrowUpRight size={14} />
+            </Link>
           </div>
 
         </div>
@@ -316,32 +267,18 @@ const Footer = () => {
         ========================================= */}
         <div className="pt-8 flex flex-col md:flex-row items-center justify-between gap-4 text-sm text-gray-400">
           <p className="text-center md:text-left">
-            © {new Date().getFullYear()} <span className="text-white font-medium">Aazim</span>. All rights reserved. Built with passion & precision.
+            © {new Date().getFullYear()} <span className="text-white font-medium">Aazim Sherazi</span>. All rights reserved. Professional Web Development.
           </p>
 
           <div className="flex items-center gap-6">
-            <Link 
-              to="/privacy" 
-              onClick={scrollToTop}
-              className="hover:text-[var(--color-accent)] transition-colors"
-            >
-              Privacy Policy
-            </Link>
-            <Link 
-              to="/terms" 
-              onClick={scrollToTop}
-              className="hover:text-[var(--color-accent)] transition-colors"
-            >
-              Terms of Service
-            </Link>
-
             {/* Back to Top Button */}
             <button
               onClick={scrollToTop}
               aria-label="Back to Top"
-              className="p-2.5 rounded-full bg-white/5 border border-white/10 text-gray-300 hover:text-black hover:bg-[var(--color-accent)] hover:border-[var(--color-accent)] transition-all duration-300 ml-2 group shadow-md"
+              className="p-2.5 rounded-full bg-white/5 border border-white/10 text-gray-300 hover:text-black hover:bg-[var(--color-accent)] hover:border-[var(--color-accent)] transition-all duration-300 ml-2 group shadow-md flex items-center gap-2 text-xs font-semibold px-4"
             >
-              <ArrowUp size={16} className="transform group-hover:-translate-y-0.5 transition-transform" />
+              <span>Back to Top</span>
+              <ArrowUp size={14} className="transform group-hover:-translate-y-0.5 transition-transform" />
             </button>
           </div>
         </div>

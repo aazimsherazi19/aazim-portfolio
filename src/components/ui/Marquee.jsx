@@ -1,20 +1,20 @@
 import React from "react";
-import { Sparkles, Code2, Zap, Layers, Cpu, ShieldCheck, Flame, Star } from "lucide-react";
+import { Sparkles, ShoppingBag, Calendar, Globe, RefreshCw, Stethoscope, Zap, ShieldCheck } from "lucide-react";
 
-const mainSkills = [
-  { text: "UI/UX DESIGN", icon: Sparkles },
-  { text: "REACT DEVELOPMENT", icon: Code2 },
-  { text: "SAAS DASHBOARDS", icon: Layers },
-  { text: "E-COMMERCE STORES", icon: Zap },
-  { text: "MOBILE APP DESIGN", icon: Cpu },
-  { text: "DESIGN SYSTEMS", icon: ShieldCheck },
-  { text: "MOTION & ANIMATIONS", icon: Flame },
-  { text: "CONVERSION UX", icon: Star },
+const mainServices = [
+  { text: "BUSINESS WEBSITES", icon: Globe },
+  { text: "ECOMMERCE STORES", icon: ShoppingBag },
+  { text: "BOOKING SYSTEMS", icon: Calendar },
+  { text: "LANDING PAGES", icon: Zap },
+  { text: "WEBSITE REDESIGN", icon: RefreshCw },
+  { text: "CLINIC WEBSITES", icon: Stethoscope },
+  { text: "SPEED OPTIMIZATION", icon: Sparkles },
+  { text: "ONGOING MAINTENANCE", icon: ShieldCheck },
 ];
 
 const techTools = [
-  "React.js", "Next.js 14", "Tailwind CSS v4", "TypeScript", 
-  "Figma", "Framer Motion", "Lenis Scroll", "Node.js", "Vercel", "Redux"
+  "WordPress", "WooCommerce", "React.js", "Next.js", "Node.js", 
+  "Tailwind CSS", "Figma", "MongoDB", "MySQL", "Vercel", "cPanel"
 ];
 
 const Marquee = () => {
@@ -35,7 +35,7 @@ const Marquee = () => {
 
         <div className="marquee hover:[animation-play-state:paused] cursor-pointer">
           {/* First set */}
-          {mainSkills.map((item, idx) => {
+          {mainServices.map((item, idx) => {
             const Icon = item.icon;
             return (
               <div key={idx} className="flex items-center gap-4 whitespace-nowrap text-white font-heading font-extrabold text-xl md:text-2xl tracking-wider">
@@ -51,7 +51,7 @@ const Marquee = () => {
           })}
 
           {/* Duplicate set for seamless infinite loop */}
-          {mainSkills.map((item, idx) => {
+          {mainServices.map((item, idx) => {
             const Icon = item.icon;
             return (
               <div key={`dup-${idx}`} className="flex items-center gap-4 whitespace-nowrap text-white font-heading font-extrabold text-xl md:text-2xl tracking-wider">

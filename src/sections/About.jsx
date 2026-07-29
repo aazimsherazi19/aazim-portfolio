@@ -3,133 +3,116 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { 
   ArrowRight, 
   CheckCircle2, 
-  Award, 
   Sparkles, 
-  Code2, 
-  Compass, 
-  Zap, 
-  Users,
-  Terminal,
   MapPin,
   Mail,
   Globe,
-  Coffee
+  BookOpen,
+  Users,
+  TrendingUp,
+  HeartHandshake
 } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 const stats = [
-  { label: "Projects Completed", value: "120+", icon: Award },
-  { label: "Client Satisfaction Rate", value: "98%", icon: Users },
-  { label: "Hours of Dedicated Coding", value: "10K+", icon: Zap },
-  { label: "Live Websites Deployed", value: "50+", icon: Code2 },
+  { label: "Projects Delivered", value: "50+", icon: TrendingUp },
+  { label: "Happy Clients", value: "40+", icon: Users },
+  { label: "Years of Experience", value: "2+", icon: BookOpen },
+  { label: "Client Satisfaction", value: "100%", icon: HeartHandshake },
 ];
 
-const coreStrengths = [
+const strengths = [
   {
-    title: "Human-Centered UI/UX",
-    desc: "Crafting interfaces built on psychological principles, user behavior research, and accessibility standards.",
-    icon: Compass
+    title: "I Understand Businesses First",
+    desc: "Before writing a single line of code, I take time to understand your business goals, your customers, and what makes you different. The website follows the business — not the other way around.",
   },
   {
-    title: "Clean Code & Architecture",
-    desc: "Writing modular, maintainable, and scalable frontend code using React, Next.js, and modern CSS frameworks.",
-    icon: Terminal
+    title: "Websites That Actually Convert",
+    desc: "A beautiful website is useless if it doesn't bring in customers. Everything I build is designed to move visitors toward the action you need — a call, a form submission, or a purchase.",
   },
   {
-    title: "Conversion-Focused Design",
-    desc: "Building landing pages and sales funnels structured to maximize visitor engagement and user conversion.",
-    icon: Zap
+    title: "Clean, Fast, and Reliable",
+    desc: "Slow or broken websites turn customers away. Every website I deliver loads quickly, works on all devices, and is built to stay stable and secure over time.",
   },
   {
-    title: "Fluid Animations & Motion",
-    desc: "Elevating web experiences with interactive micro-interactions and scroll-driven motion graphics.",
-    icon: Sparkles
+    title: "You Stay in Control",
+    desc: "I build websites you can actually manage yourself. No ongoing dependency on me for every small change — though I'm always available if you need support.",
   }
 ];
 
 const techSkills = [
-  "React.js & Next.js", "Tailwind CSS v4", "TypeScript", 
-  "UI/UX & Figma", "Framer Motion", "Lenis Smooth Scroll",
-  "SEO & Web Vitals", "Git & GitHub Workflow"
+  "Business Websites", "eCommerce Stores", "Booking Systems",
+  "Healthcare Websites", "Restaurant Websites", "Landing Pages",
+  "Website Redesigns", "Speed Optimization", "Ongoing Maintenance"
 ];
 
-// Identity card meta items
 const identityMeta = [
   { icon: MapPin, label: 'Based in', value: 'Pakistan' },
-  { icon: Globe, label: 'Available', value: 'Worldwide · Remote' },
-  { icon: Mail, label: 'Open to', value: 'Freelance & Full-time' },
-  { icon: Coffee, label: 'Fueled by', value: 'Coffee & Clean Code' },
+  { icon: Globe, label: 'Serving', value: 'Clients Worldwide' },
+  { icon: Mail, label: 'Open to', value: 'Business Projects' },
+  { icon: BookOpen, label: 'Also', value: 'BS Computer Science' },
 ];
 
 const About = () => {
   const [activeTab, setActiveTab] = useState('overview');
 
   return (
-    <section className="section-space container-custom relative py-24 overflow-hidden">
+    <section id="about" className="section-space container-custom relative py-24 overflow-hidden">
       
-      {/* Background Glow Orbs */}
-      <div className="absolute top-1/4 right-10 w-96 h-96 bg-[var(--color-primary)]/10 rounded-full blur-3xl pointer-events-none" />
-      <div className="absolute bottom-10 left-10 w-96 h-96 bg-[var(--color-accent)]/15 rounded-full blur-3xl pointer-events-none" />
+      {/* Background Glow */}
+      <div className="absolute top-1/4 right-10 w-96 h-96 bg-[var(--color-primary)]/8 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute bottom-10 left-10 w-96 h-96 bg-[var(--color-accent)]/12 rounded-full blur-3xl pointer-events-none" />
 
-      {/* =========================================
-         SECTION HEADER
-      ========================================= */}
+      {/* Section Header */}
       <div className="max-w-3xl mb-16">
         <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[var(--color-primary)]/10 border border-[var(--color-primary)]/15 text-xs font-semibold uppercase tracking-widest text-[var(--color-primary)] mb-4">
-          <Sparkles size={14} className="text-[var(--color-primary)]" />
-          Passion & Purpose
+          <Sparkles size={14} />
+          About Aazim
         </div>
 
         <h2 className="text-4xl md:text-5xl font-heading font-bold text-gray-900 leading-tight">
-          Designing Digital Products <br />
+          I Build Websites That Help <br />
           <span className="text-[var(--color-primary)]">
-            That Inspire & Drive Results.
+            Businesses Grow Online.
           </span>
         </h2>
       </div>
 
-      {/* =========================================
-         MAIN CONTENT SPLIT GRID
-      ========================================= */}
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+      {/* Main Grid */}
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
         
-        {/* LEFT SIDE: Designer Identity Card (Cols 5) */}
+        {/* LEFT — Identity Card (Cols 5) */}
         <div className="lg:col-span-5 relative">
-          
           <div className="relative rounded-3xl overflow-hidden bg-gray-950 border border-white/10 shadow-2xl">
-
-            {/* Top gradient accent bar */}
+            
+            {/* Top gradient bar */}
             <div className="h-1.5 w-full bg-gradient-to-r from-[var(--color-primary)] via-purple-500 to-[var(--color-accent)]" />
 
             <div className="p-8">
-
-              {/* Avatar — Abstract Monogram */}
+              {/* Monogram + Status */}
               <div className="flex items-start justify-between mb-8">
                 <div className="relative">
-                  {/* Glow Ring */}
-                  <div className="absolute -inset-2 rounded-full bg-gradient-to-tr from-[var(--color-primary)] to-[var(--color-accent)] opacity-30 blur-md" />
+                  <div className="absolute -inset-2 rounded-full bg-gradient-to-tr from-[var(--color-primary)] to-[var(--color-accent)] opacity-25 blur-md" />
                   <div className="relative w-20 h-20 rounded-full bg-gradient-to-br from-[var(--color-primary)] to-purple-600 flex items-center justify-center shadow-xl">
                     <span className="text-3xl font-heading font-extrabold text-white tracking-tight">AS</span>
                   </div>
                 </div>
-
-                {/* Live badge */}
-                <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/10 border border-white/20 text-xs font-medium text-white backdrop-blur-sm">
+                <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/10 border border-white/20 text-xs font-medium text-white">
                   <span className="relative flex h-2 w-2">
                     <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
                     <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
                   </span>
-                  Open to Work
+                  Taking New Projects
                 </div>
               </div>
 
               {/* Name & Title */}
               <div className="mb-6">
                 <h3 className="text-2xl font-heading font-extrabold text-white mb-1">Aazim Sherazi</h3>
-                <p className="text-sm text-gray-400 font-medium">Web Designer & Frontend Engineer</p>
+                <p className="text-sm text-gray-400 font-medium">Web Developer & Digital Solutions Provider</p>
               </div>
 
-              {/* Identity Meta */}
+              {/* Meta */}
               <div className="space-y-3 mb-8">
                 {identityMeta.map((item, i) => {
                   const Icon = item.icon;
@@ -157,65 +140,54 @@ const About = () => {
               {/* Divider */}
               <div className="h-px w-full bg-white/10 mb-6" />
 
-              {/* Mini Skill Bar Summary */}
+              {/* Services Summary */}
               <div className="space-y-3">
-                <p className="text-[10px] text-gray-500 uppercase tracking-widest font-semibold mb-4">Top Expertise</p>
-                {[
-                  { label: 'UI/UX Design', pct: 95 },
-                  { label: 'React / Next.js', pct: 90 },
-                  { label: 'Frontend Dev', pct: 88 },
-                ].map((bar, i) => (
-                  <div key={i}>
-                    <div className="flex justify-between text-xs text-gray-400 mb-1.5">
-                      <span className="font-medium">{bar.label}</span>
-                      <span>{bar.pct}%</span>
-                    </div>
-                    <div className="h-1.5 rounded-full bg-white/10 overflow-hidden">
-                      <motion.div
-                        initial={{ width: 0 }}
-                        whileInView={{ width: `${bar.pct}%` }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 1, delay: 0.3 + i * 0.15, ease: 'easeOut' }}
-                        className="h-full rounded-full bg-gradient-to-r from-[var(--color-primary)] to-purple-500"
-                      />
-                    </div>
-                  </div>
-                ))}
+                <p className="text-[10px] text-gray-500 uppercase tracking-widest font-semibold mb-4">I Build Websites For</p>
+                <div className="flex flex-wrap gap-2">
+                  {["Small Businesses", "Clinics", "Restaurants", "eCommerce Brands", "Real Estate", "Startups"].map((tag, i) => (
+                    <span
+                      key={i}
+                      className="px-3 py-1 rounded-full text-xs font-medium bg-white/8 border border-white/12 text-gray-300"
+                    >
+                      {tag}
+                    </span>
+                  ))}
+                </div>
               </div>
 
-              {/* CTA inside card */}
+              {/* CTA */}
               <div className="mt-8">
                 <Link
                   to="/about"
                   className="w-full inline-flex items-center justify-center gap-2.5 px-5 py-3 rounded-xl font-heading font-semibold text-sm text-white bg-white/10 border border-white/20 hover:bg-white/20 transition-all duration-300"
                 >
-                  <span>View Full Biography</span>
+                  <span>My Full Story & Experience</span>
                   <ArrowRight size={16} />
                 </Link>
               </div>
-
             </div>
           </div>
-
         </div>
 
-        {/* RIGHT SIDE: Interactive Tabs & Narrative (Cols 7) */}
+        {/* RIGHT — Tabs & Bio (Cols 7) */}
         <div className="lg:col-span-7 space-y-8">
           
-          {/* Bio Narrative */}
+          {/* Bio */}
           <div className="space-y-4">
-            <p className="text-lg text-gray-700 leading-relaxed font-normal">
-              I am a passionate Web Designer and Frontend Engineer dedicated to turning complex ideas into sleek, high-performing digital experiences. 
-              My focus blends human-centered UI/UX design with clean, scalable code architecture.
+            <p className="text-lg text-gray-700 leading-relaxed">
+              I'm Aazim — a web developer from Pakistan who specializes in building websites for businesses that want to grow online. My background is in CMS development, which means I understand what a business actually needs from a website: something that's easy to manage, attracts customers, and helps the business make more money.
+            </p>
+            <p className="text-base text-gray-600 leading-relaxed">
+              Over the past two years, I've built websites for clinics, restaurants, eCommerce brands, real estate agencies, and local service businesses. I also develop custom web applications when a business needs something beyond a standard website.
             </p>
           </div>
 
-          {/* Interactive Navigation Tabs */}
+          {/* Tabs */}
           <div className="flex items-center gap-2 border-b border-gray-200 pb-2">
             {[
-              { id: 'overview', label: 'Core Strengths' },
-              { id: 'stats', label: 'Key Achievements' },
-              { id: 'skills', label: 'Tech Stack' },
+              { id: 'overview', label: 'My Approach' },
+              { id: 'stats', label: 'Track Record' },
+              { id: 'skills', label: 'Services I Offer' },
             ].map((tab) => (
               <button
                 key={tab.id}
@@ -231,11 +203,11 @@ const About = () => {
             ))}
           </div>
 
-          {/* Tab Content Display */}
+          {/* Tab Content */}
           <div className="min-h-[260px]">
             <AnimatePresence mode="wait">
               
-              {/* TAB 1: CORE STRENGTHS */}
+              {/* TAB 1: MY APPROACH */}
               {activeTab === 'overview' && (
                 <motion.div
                   key="overview"
@@ -245,26 +217,20 @@ const About = () => {
                   transition={{ duration: 0.3 }}
                   className="grid grid-cols-1 sm:grid-cols-2 gap-5"
                 >
-                  {coreStrengths.map((item, idx) => {
-                    const Icon = item.icon;
-                    return (
-                      <div key={idx} className="p-5 rounded-2xl bg-white border border-gray-200/80 shadow-sm hover:border-[var(--color-primary)]/40 transition-colors">
-                        <div className="w-10 h-10 rounded-xl bg-[var(--color-primary)]/10 text-[var(--color-primary)] flex items-center justify-center mb-3">
-                          <Icon size={20} />
-                        </div>
-                        <h4 className="font-heading font-bold text-gray-900 text-base mb-1">
-                          {item.title}
-                        </h4>
-                        <p className="text-gray-600 text-xs leading-relaxed">
-                          {item.desc}
-                        </p>
-                      </div>
-                    );
-                  })}
+                  {strengths.map((item, idx) => (
+                    <div key={idx} className="p-5 rounded-2xl bg-white border border-gray-200/80 shadow-sm hover:border-[var(--color-primary)]/40 hover:shadow-md transition-all duration-300">
+                      <h4 className="font-heading font-bold text-gray-900 text-sm mb-2">
+                        {item.title}
+                      </h4>
+                      <p className="text-gray-600 text-xs leading-relaxed">
+                        {item.desc}
+                      </p>
+                    </div>
+                  ))}
                 </motion.div>
               )}
 
-              {/* TAB 2: KEY ACHIEVEMENTS & STATS */}
+              {/* TAB 2: TRACK RECORD */}
               {activeTab === 'stats' && (
                 <motion.div
                   key="stats"
@@ -282,7 +248,7 @@ const About = () => {
                           <span className="text-3xl font-heading font-bold text-[var(--color-primary)]">
                             {stat.value}
                           </span>
-                          <div className="w-9 h-9 rounded-full bg-[var(--color-accent)]/20 text-black flex items-center justify-center">
+                          <div className="w-9 h-9 rounded-full bg-[var(--color-accent)]/20 text-gray-800 flex items-center justify-center">
                             <Icon size={18} />
                           </div>
                         </div>
@@ -295,7 +261,7 @@ const About = () => {
                 </motion.div>
               )}
 
-              {/* TAB 3: TECH STACK */}
+              {/* TAB 3: SERVICES */}
               {activeTab === 'skills' && (
                 <motion.div
                   key="skills"
@@ -306,9 +272,8 @@ const About = () => {
                   className="space-y-4"
                 >
                   <p className="text-sm text-gray-600">
-                    Continuously adopting modern frameworks, build tools, and design principles to engineer world-class web experiences.
+                    From simple business websites to custom web applications — I cover everything a business needs to succeed online.
                   </p>
-                  
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                     {techSkills.map((skill, idx) => (
                       <div key={idx} className="p-3.5 rounded-xl bg-white border border-gray-200/80 text-sm font-medium text-gray-800 flex items-center gap-3 shadow-sm">
@@ -327,9 +292,9 @@ const About = () => {
           <div className="pt-4 flex flex-wrap items-center gap-4">
             <Link
               to="/contact"
-              className="inline-flex items-center gap-2.5 px-7 py-3.5 rounded-full font-heading font-semibold text-white bg-[var(--color-primary)] hover:bg-[var(--color-accent)] hover:text-black transition-all duration-300 shadow-md transform hover:-translate-y-0.5"
+              className="inline-flex items-center gap-2.5 px-7 py-3.5 rounded-full font-heading font-semibold text-white bg-[var(--color-primary)] hover:bg-[var(--color-primary-dark)] transition-all duration-300 shadow-md transform hover:-translate-y-0.5"
             >
-              <span>Let's Work Together</span>
+              <span>Start Your Project</span>
               <ArrowRight size={18} />
             </Link>
 
@@ -337,14 +302,13 @@ const About = () => {
               to="/about"
               className="inline-flex items-center gap-2 px-6 py-3.5 rounded-full font-heading font-semibold text-gray-800 bg-white border border-gray-200 hover:border-gray-400 transition-all duration-300"
             >
-              <span>Full Biography & Timeline</span>
+              <span>Read Full Story</span>
             </Link>
           </div>
 
         </div>
 
       </div>
-
     </section>
   );
 };

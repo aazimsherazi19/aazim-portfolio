@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import { projectsData } from '../data/projects';
 import ProjectCard from '../components/ui/ProjectCard';
 
-const categories = ['All', 'E-Commerce', 'SaaS', 'Web Design', 'Fintech'];
+const categories = ['All', 'Healthcare', 'eCommerce', 'Restaurant', 'Real Estate', 'Landing Page', 'Booking'];
 
 const Projects = () => {
   const [activeCategory, setActiveCategory] = useState('All');
@@ -30,13 +30,13 @@ const Projects = () => {
         <div className="max-w-2xl">
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[var(--color-primary)]/10 border border-[var(--color-primary)]/15 text-xs font-semibold uppercase tracking-widest text-[var(--color-primary)] mb-4">
             <Sparkles size={14} className="text-[var(--color-primary)]" />
-            Featured Work
+            Client Case Studies
           </div>
 
           <h2 className="text-4xl md:text-5xl font-heading font-bold text-gray-900 leading-tight">
-            Crafting High-Impact <br />
+            Real Projects. <br />
             <span className="text-[var(--color-primary)]">
-              Digital Experiences.
+              Real Business Results.
             </span>
           </h2>
         </div>
@@ -45,7 +45,7 @@ const Projects = () => {
         <div>
           <Link
             to="/projects"
-            className="inline-flex items-center gap-2.5 px-6 py-3.5 rounded-full font-heading font-semibold text-white bg-[var(--color-primary)] hover:bg-[var(--color-accent)] hover:text-black transition-all duration-300 shadow-md transform hover:-translate-y-0.5"
+            className="inline-flex items-center gap-2.5 px-6 py-3.5 rounded-full font-heading font-semibold text-white bg-[var(--color-primary)] hover:bg-[var(--color-primary-dark)] transition-all duration-300 shadow-md transform hover:-translate-y-0.5"
           >
             <span>View All Projects</span>
             <ArrowRight size={18} />
@@ -96,15 +96,15 @@ const Projects = () => {
       {/* Bottom CTA Banner Link */}
       <div className="mt-16 text-center">
         <p className="text-gray-500 text-sm mb-4 font-medium">
-          Looking for custom website design or specialized SaaS engineering?
+          Need a website tailored specifically to your industry?
         </p>
         <Link
-          to="/projects"
+          to="/contact"
           className="inline-flex items-center gap-2 text-base font-bold text-[var(--color-primary)] hover:text-[var(--color-primary-dark)] transition-colors group"
         >
           <FolderGit2 size={18} />
           <span className="underline decoration-2 underline-offset-4 group-hover:decoration-[var(--color-accent)]">
-            Explore Full Portfolio Archive
+            Discuss Your Custom Project With Me
           </span>
           <ArrowRight size={16} className="transform group-hover:translate-x-1 transition-transform" />
         </Link>

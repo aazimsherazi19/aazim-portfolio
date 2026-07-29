@@ -5,54 +5,53 @@ import {
   Sparkles, 
   Target, 
   Lightbulb, 
-  Cpu, 
   TrendingUp, 
   ArrowUpRight,
-  CheckCircle2
+  ShieldCheck
 } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 const values = [
   {
-    title: "User-First Thinking",
-    desc: "Every layout, animation, and CTA is designed around real human behavior and friction-free user journeys.",
+    title: "Business-First Approach",
+    desc: "Every design choice, menu item, and button is planned around real customer behavior and friction-free conversion.",
     icon: Target
   },
   {
-    title: "Precision Code Craftsmanship",
-    desc: "Writing modular, scalable React & Tailwind CSS code optimized for fast load times and clean maintainability.",
-    icon: Cpu
+    title: "Clean, Reliable Code",
+    desc: "Writing clean, maintainable code using WordPress, WooCommerce, and modern frameworks for fast load times.",
+    icon: ShieldCheck
   },
   {
-    title: "Continuous Innovation",
-    desc: "Leveraging modern tools like Framer Motion, Lenis scroll, and Next.js to deliver forward-thinking digital products.",
+    title: "Clear 1-on-1 Communication",
+    desc: "No jargon or confusing speak. I communicate directly, set clear expectations, and keep you updated at every stage.",
     icon: Lightbulb
   },
   {
     title: "Measurable Impact",
-    desc: "Focusing on metrics that matter — user retention, conversion rates, and SEO performance.",
+    desc: "Focusing on metrics that matter to a business owner — customer inquiries, booking conversions, and sales.",
     icon: TrendingUp
   }
 ];
 
 const timeline = [
   {
-    year: "2024 — Present",
-    role: "Lead Frontend Engineer & Web Designer",
+    year: "Present",
+    role: "Professional Web Developer & CMS Specialist",
     company: "Freelance / Global Clients",
-    desc: "Engineering high-conversion e-commerce stores, SaaS dashboards, and agency portfolios for clients worldwide."
+    desc: "Building business websites, eCommerce stores, booking systems, and custom web applications for clients worldwide."
   },
   {
-    year: "2023 — 2024",
-    role: "UI/UX & Web Developer",
-    company: "Digital Product Studio",
-    desc: "Designed design systems, responsive web apps, and custom interactive web experiences."
+    year: "Education",
+    role: "BS in Computer Science",
+    company: "University Studies",
+    desc: "Deepening theoretical knowledge in software engineering, database management, computer networks, and system architecture."
   },
   {
-    year: "2022 — 2023",
-    role: "Frontend Developer",
-    company: "Tech Projects",
-    desc: "Built custom client websites focusing on responsive HTML/CSS, JavaScript, and React integrations."
+    year: "Specialization",
+    role: "WordPress, WooCommerce & MERN Development",
+    company: "Client Projects",
+    desc: "Developing custom themes, online stores, dynamic lead generation sites, and full-stack web applications."
   }
 ];
 
@@ -66,16 +65,16 @@ const AboutPage = () => {
       <section className="container-custom text-center max-w-3xl mx-auto mb-16 px-6">
         <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[var(--color-primary)]/10 border border-[var(--color-primary)]/15 text-xs font-semibold uppercase tracking-widest text-[var(--color-primary)] mb-6">
           <User size={16} />
-          Biography & Background
+          About Aazim Sherazi
         </div>
 
         <h1 className="text-4xl md:text-6xl font-heading font-bold text-gray-900 leading-tight mb-6">
-          Crafting Meaningful <br />
-          <span className="text-[var(--color-primary)]">Digital Products</span>
+          Building Digital Solutions for <br />
+          <span className="text-[var(--color-primary)]">Growing Businesses</span>
         </h1>
 
         <p className="text-gray-600 text-lg leading-relaxed">
-          I am Aazim — a Web Designer and Frontend Engineer dedicated to turning complex client visions into sleek, high-performing websites.
+          I am Aazim — a web developer dedicated to building reliable, high-converting websites that help small businesses, clinics, restaurants, and eCommerce brands succeed online.
         </p>
       </section>
 
@@ -93,7 +92,7 @@ const AboutPage = () => {
             Guiding Principles
           </span>
           <h2 className="text-3xl md:text-4xl font-heading font-bold text-gray-900">
-            The Philosophy Behind My Work
+            How I Approach Every Client Project
           </h2>
         </div>
 
@@ -126,7 +125,7 @@ const AboutPage = () => {
       <section className="section-space container-custom bg-[#f9f9fc] rounded-[40px] py-20 px-6 md:px-14 my-20 border border-gray-100">
         <div className="max-w-2xl mb-14">
           <span className="text-xs font-semibold uppercase tracking-widest text-[var(--color-primary)] block mb-3">
-            Milestones
+            Background & Foundation
           </span>
           <h2 className="text-3xl md:text-4xl font-heading font-bold text-gray-900">
             Experience & Journey
@@ -177,18 +176,18 @@ const AboutPage = () => {
             </span>
 
             <h2 className="text-3xl md:text-5xl font-heading font-bold mb-4 text-white leading-tight">
-              Ready to start your next web project?
+              Ready to start your next business website project?
             </h2>
 
             <p className="text-gray-300 text-base md:text-lg mb-8 max-w-xl mx-auto">
-              Send me a message with your project idea, and let's craft an exceptional digital experience together.
+              Send me a message with your project goals, and let's craft a website built for growth.
             </p>
 
             <Link
               to="/contact"
               className="inline-flex items-center gap-3 px-8 py-4 rounded-full font-heading font-semibold text-black bg-[var(--color-accent)] hover:bg-white transition-all duration-300 shadow-xl transform hover:-translate-y-1"
             >
-              <span>Get in Touch</span>
+              <span>Get a Free Quote & Consultation</span>
               <ArrowUpRight size={20} />
             </Link>
           </div>

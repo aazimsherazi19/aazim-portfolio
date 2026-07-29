@@ -5,43 +5,43 @@ import { assets } from '../assets/assets';
 const portfolioData = [
   {
     id: 1,
-    title: "ShopFlow E-Commerce & Retail",
-    category: "Full Stack Web App",
+    title: "Fashion Clothing Brand Store",
+    category: "Online Store & eCommerce",
     image: assets.g1,
     link: "https://shop-flow-r6no.vercel.app/"
   },
   {
     id: 2,
-    title: "Artisan Co. Photography Studio",
-    category: "Portfolio & Gallery",
+    title: "Local Dental & Healthcare Clinic",
+    category: "Clinic & Appointment Website",
     image: assets.p1,
     link: "https://shop-flow-r6no.vercel.app/"
   },
   {
     id: 3,
-    title: "TechFlow Digital Marketing Agency",
-    category: "Corporate Agency",
+    title: "Digital Marketing Agency Site",
+    category: "Business Lead Generation",
     image: assets.p2,
     link: "https://shop-flow-r6no.vercel.app/"
   },
   {
     id: 4,
-    title: "Gourmet Bistro Restaurant & Cafe",
-    category: "Hospitality & Dining",
+    title: "Gourmet Bistro Restaurant & Café",
+    category: "Restaurant & Table Booking",
     image: assets.p3,
     link: "https://shop-flow-r6no.vercel.app/"
   },
   {
     id: 5,
-    title: "Urban Space Architecture & Interior",
-    category: "Real Estate & Design",
+    title: "Urban Real Estate Agency Platform",
+    category: "Real Estate Listings",
     image: assets.p4,
     link: "https://shop-flow-r6no.vercel.app/"
   },
   {
     id: 6,
-    title: "Nova AI SaaS Platform Studio",
-    category: "SaaS & Dashboard",
+    title: "Fitness Studio Booking Portal",
+    category: "Membership & Class Booking",
     image: assets.project1,
     link: "https://shop-flow-r6no.vercel.app/"
   }
@@ -55,16 +55,16 @@ const PortfolioGrid = () => {
       <div className="text-center max-w-3xl mx-auto mb-16 space-y-4">
         <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[var(--color-primary)]/10 border border-[var(--color-primary)]/15 text-xs font-semibold uppercase tracking-widest text-[var(--color-primary)]">
           <Globe size={14} />
-          Live Website Showcase
+          Live Client Website Showcase
         </div>
 
         <h2 className="text-4xl md:text-5xl font-heading font-bold text-gray-900 leading-tight">
           <span className="text-[var(--color-primary)]">50+ Complete Websites</span> <br />
-          Built & Deployed for Clients
+          Built & Deployed for Businesses
         </h2>
 
         <p className="text-gray-600 text-base max-w-xl mx-auto">
-          Explore a curated selection of live, fully responsive websites designed for startups, e-commerce brands, and agency clients worldwide.
+          Explore a selection of live, mobile-responsive websites designed for small businesses, clinics, restaurants, and eCommerce brands worldwide.
         </p>
       </div>
 
@@ -143,7 +143,7 @@ const PortfolioGrid = () => {
           href="https://github.com"
           target="_blank"
           rel="noopener noreferrer"
-          className="inline-flex items-center gap-3 px-8 py-4 rounded-full font-heading font-semibold text-white bg-[var(--color-primary)] hover:bg-[var(--color-accent)] hover:text-black transition-all duration-300 shadow-md transform hover:-translate-y-0.5"
+          className="inline-flex items-center gap-3 px-8 py-4 rounded-full font-heading font-semibold text-white bg-[var(--color-primary)] hover:bg-[var(--color-primary-dark)] transition-all duration-300 shadow-md transform hover:-translate-y-0.5"
         >
           <Layers size={18} />
           <span>Explore All 50+ Client Sites</span>

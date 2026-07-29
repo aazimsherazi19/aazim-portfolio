@@ -41,7 +41,6 @@ const Navbar = () => {
     { name: "Services", path: "/services" },
     { name: "Projects", path: "/projects" },
     { name: "Testimonials", path: "/testimonials" },
-    { name: "Blogs", path: "/blogs" },
     { name: "Contact", path: "/contact" },
   ];
 
@@ -94,9 +93,9 @@ const Navbar = () => {
           <div className="hidden lg:flex items-center gap-4">
             <Link
               to="/contact"
-              className="inline-flex items-center gap-2 px-6 py-2.5 rounded-full font-heading font-semibold text-white bg-[var(--color-primary)] hover:bg-[var(--color-accent)] hover:text-black transition-all duration-300 shadow-md shadow-[var(--color-primary)]/15 transform hover:-translate-y-0.5 text-sm"
+              className="inline-flex items-center gap-2 px-6 py-2.5 rounded-full font-heading font-semibold text-white bg-[var(--color-primary)] hover:bg-[var(--color-primary-dark)] transition-all duration-300 shadow-md shadow-[var(--color-primary)]/15 transform hover:-translate-y-0.5 text-sm"
             >
-              <span>Hire Me</span>
+              <span>Get a Free Quote</span>
               <ArrowUpRight size={16} />
             </Link>
           </div>
@@ -180,7 +179,7 @@ const Navbar = () => {
                   to="/contact"
                   className="w-full inline-flex items-center justify-center gap-2 px-6 py-4 rounded-full font-heading font-semibold text-black bg-[var(--color-accent)] hover:bg-white transition-all shadow-lg"
                 >
-                  <span>Start a Project</span>
+                  <span>Get a Free Quote</span>
                   <Sparkles size={18} />
                 </Link>
 
