@@ -1,8 +1,31 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { ArrowRight, Sparkles, ArrowDown, FolderGit2, Star, Code2 } from 'lucide-react';
+import { ArrowRight, ArrowDown, FolderGit2, Star, Code2, Layers, Zap, Globe } from 'lucide-react';
 import { Link } from 'react-router-dom';
-import { assets } from '../assets/assets.js';
+
+const techStack = [
+  { name: 'React', color: '#61DAFB', bg: '#61DAFB15' },
+  { name: 'Next.js', color: '#ffffff', bg: '#ffffff15' },
+  { name: 'Tailwind', color: '#38BDF8', bg: '#38BDF815' },
+  { name: 'TypeScript', color: '#3178C6', bg: '#3178C615' },
+  { name: 'Figma', color: '#F24E1E', bg: '#F24E1E15' },
+  { name: 'Framer', color: '#a78bfa', bg: '#a78bfa15' },
+];
+
+const floatingCards = [
+  {
+    icon: Code2,
+    title: 'Frontend Engineer',
+    sub: 'React • Next.js • TypeScript',
+    position: 'top-left',
+  },
+  {
+    icon: Layers,
+    title: 'UI/UX Designer',
+    sub: 'Figma • Design Systems',
+    position: 'bottom-right',
+  },
+];
 
 const Hero = () => {
   return (
@@ -84,7 +107,7 @@ const Hero = () => {
         </motion.div>
 
         {/* =========================================
-           RIGHT VISUAL PORTRAIT COLUMN (Cols 5)
+           RIGHT — ANIMATED TECH VISUAL (Cols 5)
         ========================================= */}
         <motion.div
           initial={{ opacity: 0, scale: 0.94 }}
@@ -93,17 +116,85 @@ const Hero = () => {
           className="lg:col-span-5 relative flex justify-center lg:justify-end z-10"
         >
           <div className="relative w-full max-w-[440px]">
-            
+
             {/* Ambient Back Glow Ring */}
             <div className="absolute -inset-4 rounded-[40px] bg-gradient-to-tr from-[var(--color-primary)] to-[var(--color-accent)] opacity-20 blur-2xl -z-10" />
 
-            {/* Profile Image Container */}
-            <div className="relative rounded-[36px] overflow-hidden bg-gray-900 p-2 border border-white/60 shadow-2xl">
-              <img
-                src={assets.hero}
-                alt="Aazim - Web Designer"
-                className="w-full h-auto object-cover rounded-[28px] transform hover:scale-105 transition-transform duration-700"
-              />
+            {/* Main Visual Card — Code Terminal */}
+            <div className="relative rounded-[32px] overflow-hidden bg-gray-950 border border-white/10 shadow-2xl p-6">
+
+              {/* Terminal Top Bar */}
+              <div className="flex items-center gap-2 mb-5">
+                <span className="w-3 h-3 rounded-full bg-red-500/80" />
+                <span className="w-3 h-3 rounded-full bg-yellow-500/80" />
+                <span className="w-3 h-3 rounded-full bg-green-500/80" />
+                <span className="ml-3 text-xs text-gray-500 font-mono">aazim.portfolio.js</span>
+              </div>
+
+              {/* Animated Code Lines */}
+              <div className="font-mono text-sm space-y-2 text-left">
+                {[
+                  { indent: 0, token: 'const', name: ' developer', rest: ' = {' },
+                  { indent: 1, key: 'name', val: '"Aazim Sherazi"', color: '#fbbf24' },
+                  { indent: 1, key: 'role', val: '"Frontend Engineer"', color: '#34d399' },
+                  { indent: 1, key: 'passion', val: '"Beautiful UI/UX"', color: '#a78bfa' },
+                  { indent: 1, key: 'available', val: 'true', color: '#38bdf8' },
+                  { indent: 0, rest: '};' },
+                ].map((line, i) => (
+                  <motion.div
+                    key={i}
+                    initial={{ opacity: 0, x: -10 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ duration: 0.4, delay: 0.5 + i * 0.15 }}
+                    className="flex items-center gap-1"
+                    style={{ paddingLeft: `${(line.indent || 0) * 16}px` }}
+                  >
+                    {line.token && <span className="text-purple-400">{line.token}</span>}
+                    {line.name && <span className="text-blue-300">{line.name}</span>}
+                    {line.key && <span className="text-gray-400">{line.key}<span className="text-gray-600">:</span></span>}
+                    {line.val && <span style={{ color: line.color }} className="ml-2">{line.val}<span className="text-gray-600">,</span></span>}
+                    {line.rest && <span className="text-gray-300">{line.rest}</span>}
+                  </motion.div>
+                ))}
+
+                {/* Blinking cursor */}
+                <motion.div
+                  className="flex items-center gap-1 mt-2"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ delay: 1.5 }}
+                >
+                  <span className="text-gray-500">{'>'}</span>
+                  <motion.span
+                    className="inline-block w-2.5 h-5 bg-[var(--color-primary)] rounded-sm ml-1"
+                    animate={{ opacity: [1, 0, 1] }}
+                    transition={{ duration: 1, repeat: Infinity }}
+                  />
+                </motion.div>
+              </div>
+
+              {/* Tech Stack Pills */}
+              <div className="mt-6 pt-5 border-t border-white/10">
+                <p className="text-[10px] text-gray-500 uppercase tracking-widest mb-3 font-semibold">Tech Stack</p>
+                <div className="flex flex-wrap gap-2">
+                  {techStack.map((tech, i) => (
+                    <motion.span
+                      key={tech.name}
+                      initial={{ opacity: 0, scale: 0.8 }}
+                      animate={{ opacity: 1, scale: 1 }}
+                      transition={{ delay: 1.6 + i * 0.08 }}
+                      className="px-3 py-1 rounded-full text-xs font-semibold border"
+                      style={{
+                        color: tech.color,
+                        backgroundColor: tech.bg,
+                        borderColor: `${tech.color}30`,
+                      }}
+                    >
+                      {tech.name}
+                    </motion.span>
+                  ))}
+                </div>
+              </div>
             </div>
 
             {/* Floating Glass Badge 1 (Top Left) */}
