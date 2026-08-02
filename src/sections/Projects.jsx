@@ -4,11 +4,19 @@ import { ArrowRight, Sparkles, FolderGit2 } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { projectsData } from '../data/projects';
 import ProjectCard from '../components/ui/ProjectCard';
+import CaseStudyModal from '../components/ui/CaseStudyModal';
 
-const categories = ['All', 'Healthcare', 'eCommerce', 'Restaurant', 'Real Estate', 'Landing Page', 'Booking'];
+const categories = ['All', 'eCommerce', 'Booking & Rentals', 'Restaurant & Food', 'Lead Generation'];
 
 const Projects = () => {
   const [activeCategory, setActiveCategory] = useState('All');
+  const [selectedProject, setSelectedProject] = useState(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const handleOpenCaseStudy = (project) => {
+    setSelectedProject(project);
+    setIsModalOpen(true);
+  };
 
   // Filter projects by active category
   const filteredProjects = activeCategory === 'All'
@@ -87,7 +95,7 @@ const Projects = () => {
               exit={{ opacity: 0, scale: 0.95 }}
               transition={{ duration: 0.4 }}
             >
-              <ProjectCard project={project} />
+              <ProjectCard project={project} onSelectCaseStudy={handleOpenCaseStudy} />
             </motion.div>
           ))}
         </AnimatePresence>
@@ -109,6 +117,13 @@ const Projects = () => {
           <ArrowRight size={16} className="transform group-hover:translate-x-1 transition-transform" />
         </Link>
       </div>
+
+      {/* Interactive Case Study Modal */}
+      <CaseStudyModal
+        project={selectedProject}
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+      />
 
     </section>
   );

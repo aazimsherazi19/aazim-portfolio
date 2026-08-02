@@ -2,14 +2,22 @@ import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { projectsData } from '../data/projects';
 import ProjectCard from '../components/ui/ProjectCard';
+import CaseStudyModal from '../components/ui/CaseStudyModal';
 import PortfolioGridSection from '../sections/PortfolioGrid';
 import { FolderGit2, Sparkles, ArrowUpRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
-const categories = ['All', 'Healthcare', 'eCommerce', 'Restaurant', 'Real Estate', 'Landing Page', 'Booking'];
+const categories = ['All', 'eCommerce', 'Booking & Rentals', 'Restaurant & Food', 'Lead Generation'];
 
 const ProjectsPage = () => {
   const [activeCategory, setActiveCategory] = useState('All');
+  const [selectedProject, setSelectedProject] = useState(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const handleOpenCaseStudy = (project) => {
+    setSelectedProject(project);
+    setIsModalOpen(true);
+  };
 
   const filteredProjects = activeCategory === 'All'
     ? projectsData
@@ -33,7 +41,7 @@ const ProjectsPage = () => {
         </h1>
 
         <p className="text-gray-600 text-lg leading-relaxed">
-          Explore case studies of custom business websites, online stores, booking systems, and landing pages designed to solve real business challenges.
+          Explore case studies of custom business websites, online stores, booking systems, and lead generation platforms designed to solve real business challenges.
         </p>
       </section>
 
@@ -71,7 +79,11 @@ const ProjectsPage = () => {
                 exit={{ opacity: 0, scale: 0.95 }}
                 transition={{ duration: 0.4 }}
               >
-                <ProjectCard project={project} priority={idx < 3} />
+                <ProjectCard
+                  project={project}
+                  priority={idx < 3}
+                  onSelectCaseStudy={handleOpenCaseStudy}
+                />
               </motion.div>
             ))}
           </AnimatePresence>
@@ -81,7 +93,7 @@ const ProjectsPage = () => {
       {/* =========================================
          LIVE SITES SHOWCASE (PortfolioGrid)
       ========================================= */}
-      <PortfolioGridSection />
+      <PortfolioGridSection isHomePage={false} />
 
       {/* =========================================
          PROJECT INQUIRY CTA BANNER
@@ -119,6 +131,13 @@ const ProjectsPage = () => {
           </div>
         </div>
       </section>
+
+      {/* Interactive Case Study Modal */}
+      <CaseStudyModal
+        project={selectedProject}
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+      />
 
     </div>
   );

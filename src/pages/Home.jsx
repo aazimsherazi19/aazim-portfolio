@@ -20,7 +20,7 @@ const Home = () => {
       <OurProcess/>
       <Projects/>
       <Testimonials/>
-      <PortfolioGrid/>
+      <PortfolioGrid isHomePage={true} />
     </div>
   )
 }

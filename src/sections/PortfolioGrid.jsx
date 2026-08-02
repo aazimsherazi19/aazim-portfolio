@@ -1,56 +1,68 @@
 import React from 'react';
 import { ArrowUpRight, Globe, Layers } from 'lucide-react';
+import { Link } from 'react-router-dom';
 import { assets } from '../assets/assets';
 
-const portfolioData = [
+export const portfolioData = [
   {
     id: 1,
     title: "Fashion Clothing Brand Store",
     category: "Online Store & eCommerce",
-    image: assets.g1,
-    link: "https://shop-flow-r6no.vercel.app/"
+    image: assets.a1,
+    link: "https://strongernoteasier.com/",
+    showOnHome: true
   },
   {
     id: 2,
-    title: "Local Dental & Healthcare Clinic",
-    category: "Clinic & Appointment Website",
-    image: assets.p1,
-    link: "https://shop-flow-r6no.vercel.app/"
+    title: "Car Rental/Booking Site",
+    category: "Booking Website",
+    image: assets.a5,
+    link: "https://ondemandcarsrva.com",
+    showOnHome: true
   },
   {
     id: 3,
     title: "Digital Marketing Agency Site",
     category: "Business Lead Generation",
-    image: assets.p2,
-    link: "https://shop-flow-r6no.vercel.app/"
+    image: assets.a3,
+    link: "https://trinityappliancerepairllc.com/",
+    showOnHome: true
   },
   {
     id: 4,
-    title: "Gourmet Bistro Restaurant & Café",
-    category: "Restaurant & Table Booking",
-    image: assets.p3,
-    link: "https://shop-flow-r6no.vercel.app/"
+    title: "Means Greens Salad & Soup",
+    category: "Restaurant & Online Food Ordering",
+    image: assets.a4,
+    link: "https://meangreenscafe.com/",
+    showOnHome: true
   },
   {
     id: 5,
-    title: "Urban Real Estate Agency Platform",
-    category: "Real Estate Listings",
-    image: assets.p4,
-    link: "https://shop-flow-r6no.vercel.app/"
+    title: "Home Improvements Contractor Site",
+    category: "Business Lead Generation",
+    image: assets.a6,
+    link: "https://souzashomeimprovements.com/",
+    showOnHome: true
   },
   {
     id: 6,
-    title: "Fitness Studio Booking Portal",
-    category: "Membership & Class Booking",
-    image: assets.project1,
-    link: "https://shop-flow-r6no.vercel.app/"
+    title: "Luxury Clothing Brand Store",
+    category: "Online Store & eCommerce",
+    image: assets.a7,
+    link: "https://exquisiteglamourmore.com/",
+    showOnHome: true
   }
 ];
 
-const PortfolioGrid = () => {
+const PortfolioGrid = ({ isHomePage = false }) => {
+  // If rendering on Home Page, filter projects where showOnHome is true. On inner page, render all projects.
+  const displayedProjects = isHomePage
+    ? portfolioData.filter((project) => project.showOnHome)
+    : portfolioData;
+
   return (
     <section className="section-space container-custom py-20">
-      
+
       {/* Header */}
       <div className="text-center max-w-3xl mx-auto mb-16 space-y-4">
         <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[var(--color-primary)]/10 border border-[var(--color-primary)]/15 text-xs font-semibold uppercase tracking-widest text-[var(--color-primary)]">
@@ -70,9 +82,9 @@ const PortfolioGrid = () => {
 
       {/* Grid Layout */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        {portfolioData.map((project) => (
+        {displayedProjects.map((project) => (
           <div key={project.id} className="group relative flex flex-col h-full bg-white rounded-3xl border border-gray-200 shadow-sm hover:shadow-xl transition-all duration-500 overflow-hidden">
-            
+
             {/* Device Browser Frame */}
             <a
               href={project.link}
@@ -88,7 +100,7 @@ const PortfolioGrid = () => {
                   <span className="w-2 h-2 rounded-full bg-green-500/80" />
                 </div>
                 <span className="text-[10px] font-mono text-gray-400">
-                  {project.title.toLowerCase().split(' ')[0]}.live
+                  {new URL(project.link).hostname}
                 </span>
                 <div className="w-6" />
               </div>
@@ -137,18 +149,18 @@ const PortfolioGrid = () => {
         ))}
       </div>
 
-      {/* Bottom Action */}
-      <div className="flex justify-center mt-16">
-        <a
-          href="https://github.com"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="inline-flex items-center gap-3 px-8 py-4 rounded-full font-heading font-semibold text-white bg-[var(--color-primary)] hover:bg-[var(--color-primary-dark)] transition-all duration-300 shadow-md transform hover:-translate-y-0.5"
-        >
-          <Layers size={18} />
-          <span>Explore All 50+ Client Sites</span>
-        </a>
-      </div>
+      {/* Bottom Action - Rendered only on Home Page */}
+      {isHomePage && (
+        <div className="flex justify-center mt-16">
+          <Link
+            to="/projects"
+            className="inline-flex items-center gap-3 px-8 py-4 rounded-full font-heading font-semibold text-white bg-[var(--color-primary)] hover:bg-[var(--color-primary-dark)] transition-all duration-300 shadow-md transform hover:-translate-y-0.5"
+          >
+            <Layers size={18} />
+            <span>Explore All 50+ Client Sites</span>
+          </Link>
+        </div>
+      )}
 
     </section>
   );

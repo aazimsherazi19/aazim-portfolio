@@ -1,7 +1,7 @@
 import React from 'react';
-import { ExternalLink, ArrowUpRight, TrendingUp } from 'lucide-react';
+import { ExternalLink, ArrowUpRight, TrendingUp, BookOpen } from 'lucide-react';
 
-const ProjectCard = ({ project, priority = false }) => {
+const ProjectCard = ({ project, priority = false, onSelectCaseStudy }) => {
   const { title, category, image, desc, tags, metrics, liveUrl } = project;
 
   return (
@@ -10,7 +10,10 @@ const ProjectCard = ({ project, priority = false }) => {
       {/* =========================================
          BROWSER MOCKUP HEADER & IMAGE CONTAINER
       ========================================= */}
-      <div className="relative w-full aspect-[16/10] overflow-hidden bg-gray-900">
+      <div 
+        onClick={() => onSelectCaseStudy && onSelectCaseStudy(project)}
+        className="relative w-full aspect-[16/10] overflow-hidden bg-gray-900 cursor-pointer"
+      >
         
         {/* MacOS Style Browser Header */}
         <div className="absolute top-0 inset-x-0 h-8 bg-gray-900/80 backdrop-blur-md z-20 flex items-center justify-between px-4 border-b border-white/10">
@@ -20,7 +23,7 @@ const ProjectCard = ({ project, priority = false }) => {
             <span className="w-2.5 h-2.5 rounded-full bg-green-500/80" />
           </div>
           <span className="text-[10px] font-mono text-gray-400 truncate max-w-[140px]">
-            {title.toLowerCase().replace(/[^a-z0-9]/g, '')}.dev
+            {new URL(liveUrl).hostname}
           </span>
           <div className="w-8" />
         </div>
@@ -51,16 +54,29 @@ const ProjectCard = ({ project, priority = false }) => {
             className="w-full h-full object-cover object-top transform group-hover:scale-105 transition-transform duration-700 ease-out"
           />
 
-          {/* Hover Dark Overlay with Live Preview Button */}
-          <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center p-6 z-10">
+          {/* Hover Dark Overlay with Actions */}
+          <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center p-6 z-10 gap-3">
+            <button
+              type="button"
+              onClick={(e) => {
+                e.stopPropagation();
+                if (onSelectCaseStudy) onSelectCaseStudy(project);
+              }}
+              className="inline-flex items-center gap-1.5 px-4 py-2.5 rounded-full bg-[var(--color-accent)] text-black font-heading font-semibold text-xs hover:bg-white transition-all duration-300 shadow-xl"
+            >
+              <BookOpen size={14} />
+              <span>Read Case Study</span>
+            </button>
+
             <a
               href={liveUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-[var(--color-accent)] text-black font-heading font-semibold text-sm hover:bg-white transition-all duration-300 shadow-xl transform translate-y-4 group-hover:translate-y-0"
+              onClick={(e) => e.stopPropagation()}
+              className="inline-flex items-center gap-1.5 px-4 py-2.5 rounded-full bg-white text-black font-heading font-semibold text-xs hover:bg-[var(--color-accent)] transition-all duration-300 shadow-xl"
             >
-              <span>View Live Demo</span>
-              <ArrowUpRight size={18} />
+              <span>Live Site</span>
+              <ArrowUpRight size={14} />
             </a>
           </div>
         </div>
@@ -72,7 +88,10 @@ const ProjectCard = ({ project, priority = false }) => {
       <div className="p-7 flex flex-col justify-between flex-grow space-y-5">
         <div>
           {/* Title */}
-          <h3 className="text-xl font-heading font-bold text-gray-900 group-hover:text-[var(--color-primary)] transition-colors duration-300 line-clamp-1 mb-2.5">
+          <h3 
+            onClick={() => onSelectCaseStudy && onSelectCaseStudy(project)}
+            className="text-xl font-heading font-bold text-gray-900 group-hover:text-[var(--color-primary)] transition-colors duration-300 line-clamp-1 mb-2.5 cursor-pointer"
+          >
             {title}
           </h3>
 
@@ -95,21 +114,26 @@ const ProjectCard = ({ project, priority = false }) => {
             ))}
           </div>
 
-          {/* Card Footer Action Link */}
+          {/* Card Footer Action Links */}
           <div className="pt-3 border-t border-gray-100 flex items-center justify-between">
+            <button
+              type="button"
+              onClick={() => onSelectCaseStudy && onSelectCaseStudy(project)}
+              className="inline-flex items-center gap-1.5 text-xs font-bold text-[var(--color-primary)] hover:text-[var(--color-primary-dark)] transition-colors"
+            >
+              <BookOpen size={14} />
+              <span>View Case Study</span>
+            </button>
+
             <a
               href={liveUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-1.5 text-xs font-bold text-[var(--color-primary)] hover:text-[var(--color-primary-dark)] group/link transition-colors"
+              className="inline-flex items-center gap-1 text-xs font-bold text-gray-500 hover:text-gray-900 transition-colors"
             >
-              <span>Explore Project</span>
-              <ExternalLink size={14} className="transform group-hover/link:translate-x-0.5 group-hover/link:-translate-y-0.5 transition-transform" />
+              <span>Live Site</span>
+              <ExternalLink size={12} />
             </a>
-
-            <span className="text-xs text-gray-400 font-medium">
-              Case Study & Demo
-            </span>
           </div>
         </div>
 

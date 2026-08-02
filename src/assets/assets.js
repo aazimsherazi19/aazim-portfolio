@@ -9,8 +9,13 @@ import t1 from './t1.png'
 import t2 from './t2.png'
 import t3 from './t3.png'
 import g1 from './g1.png'
-
-
+import a1 from './a1.png'
+import a2 from './a2.png'
+import a3 from './a3.png'
+import a4 from './a4.png'
+import a5 from './a5.png'
+import a6 from './a6.png'
+import a7 from './a7.png'
 export const assets = {
     hero,
     s1,
@@ -22,7 +27,8 @@ export const assets = {
     t1,
     t2,
     t3,
-    g1
+    g1,
+    a1, a2, a3, a4, a5, a6, a7
 }
 
 
