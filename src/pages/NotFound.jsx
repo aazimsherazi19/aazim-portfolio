@@ -11,7 +11,7 @@ const NotFound = () => {
       <div className="absolute top-1/3 right-1/4 w-72 h-72 bg-[var(--color-accent)]/15 rounded-full blur-3xl pointer-events-none" />
 
       <div className="container-custom max-w-3xl mx-auto text-center relative z-10">
-        
+
         {/* Animated 404 Badge */}
         <motion.div
           initial={{ opacity: 0, scale: 0.8 }}
@@ -24,7 +24,7 @@ const NotFound = () => {
         </motion.div>
 
         {/* Big 404 Display */}
-        <motion.h1 
+        <motion.h1
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.1 }}
