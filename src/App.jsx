@@ -23,7 +23,8 @@ const App = () => {
         <Route path="about" element={<About/>}/>
         <Route path="services" element={<Services/>}/>
         <Route path="projects" element={<Projects/>}/>
-        <Route path="testimonials" element={<Testimonials/>}/>
+        {/* HIDE FOR NOW - Uncomment to re-enable Testimonials page */}
+        {/* <Route path="testimonials" element={<Testimonials/>}/> */}
         <Route path="contact" element={<Contact/>}/>
         <Route path="blogs" element={<Blogs/>}/>
         <Route path="*" element={<NotFound/>}/>

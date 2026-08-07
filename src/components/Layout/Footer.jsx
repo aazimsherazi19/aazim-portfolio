@@ -45,7 +45,7 @@ const Footer = () => {
     { name: 'About', path: '/about' },
     { name: 'Services', path: '/services' },
     { name: 'Projects', path: '/projects' },
-    { name: 'Testimonials', path: '/testimonials' },
+    // { name: 'Testimonials', path: '/testimonials' }, // HIDE FOR NOW - Re-enable later
     { name: 'Contact', path: '/contact' },
   ]
 
@@ -58,8 +58,8 @@ const Footer = () => {
   ]
 
   const socialLinks = [
-    { name: 'GitHub', icon: GithubIcon, url: 'https://github.com' },
-    { name: 'LinkedIn', icon: LinkedinIcon, url: 'https://linkedin.com' },
+    { name: 'GitHub', icon: GithubIcon, url: 'https://github.com/aazimsherazi19' },
+    { name: 'LinkedIn', icon: LinkedinIcon, url: 'https://www.linkedin.com/in/aazim-sherazi-9a63b5279/' },
     { name: 'Twitter', icon: TwitterIcon, url: 'https://twitter.com' },
   ]
 
@@ -122,7 +122,7 @@ const Footer = () => {
               </Link>
               
               <a 
-                href="mailto:aazim.dev@gmail.com"
+                href="mailto:aazimsherazi@gmail.com"
                 className="w-full sm:w-auto inline-flex items-center justify-center gap-3 px-8 py-4 rounded-full font-heading font-medium text-white bg-white/10 hover:bg-white/20 border border-white/15 backdrop-blur-md transition-all duration-300 transform hover:-translate-y-1"
               >
                 <Mail size={18} className="text-[var(--color-accent)]" />
@@ -240,8 +240,8 @@ const Footer = () => {
               </div>
               <div className="flex items-center gap-3">
                 <Mail size={16} className="text-[var(--color-accent)] shrink-0" />
-                <a href="mailto:aazim.dev@gmail.com" className="hover:text-white transition-colors">
-                  aazim.dev@gmail.com
+                <a href="mailto:aazimsherazi@gmail.com" className="hover:text-white transition-colors">
+                  aazimsherazi@gmail.com
                 </a>
               </div>
               <div className="flex items-center gap-3">

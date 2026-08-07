@@ -14,7 +14,9 @@ import {
   Zap,
   PhoneCall,
   Clock,
-  ShieldCheck
+  ShieldCheck,
+  Loader2,
+  AlertCircle
 } from 'lucide-react';
 
 const projectTypes = [
@@ -66,26 +68,62 @@ const ContactPage = () => {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
-    phone: '',
     projectType: 'Business Website',
     budget: '$500 - $1,500',
     message: ''
   });
 
+  const [submitting, setSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
+  const [errorMsg, setErrorMsg] = useState('');
   const [copied, setCopied] = useState(false);
   const [activeFaq, setActiveFaq] = useState(null);
 
   const handleCopyEmail = () => {
-    navigator.clipboard.writeText('aazim.dev@gmail.com');
+    navigator.clipboard.writeText('aazimsherazi@gmail.com');
     setCopied(true);
     setTimeout(() => setCopied(false), 3000);
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    if (formData.name && formData.email && formData.message) {
-      setSubmitted(true);
+    if (!formData.name || !formData.email || !formData.message) return;
+
+    setSubmitting(true);
+    setErrorMsg('');
+
+    try {
+      const response = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        body: JSON.stringify({
+          access_key: '758eee7e-24c8-42bd-9c62-f3b443eb3aaa',
+          subject: `🚀 New Website Inquiry: ${formData.name} (${formData.projectType})`,
+          from_name: 'Aazim Portfolio Website',
+          name: formData.name,
+          email: formData.email,
+          "Service Requested": formData.projectType,
+          "Estimated Budget": formData.budget,
+          "Client Message": formData.message,
+          "Submitted From": "Aazim Sherazi Portfolio Contact Form"
+        })
+      });
+
+      const data = await response.json();
+
+      if (data.success) {
+        setSubmitted(true);
+      } else {
+        setErrorMsg(data.message || 'Something went wrong. Please try again or email directly.');
+      }
+    } catch (error) {
+      console.error('Error submitting Web3Forms contact form:', error);
+      setErrorMsg('Network error. Please try again or copy my direct email.');
+    } finally {
+      setSubmitting(false);
     }
   };
 
@@ -167,8 +205,8 @@ const ContactPage = () => {
                     <span className="text-xs font-semibold text-gray-400 uppercase tracking-wider block">
                       Direct Email
                     </span>
-                    <a href="mailto:aazim.dev@gmail.com" className="text-base font-bold text-gray-900 hover:text-[var(--color-primary)] transition-colors">
-                      aazim.dev@gmail.com
+                    <a href="mailto:aazimsherazi@gmail.com" className="text-base font-bold text-gray-900 hover:text-[var(--color-primary)] transition-colors">
+                      aazimsherazi@gmail.com
                     </a>
                   </div>
                 </div>
@@ -260,7 +298,8 @@ const ContactPage = () => {
                   <button
                     onClick={() => {
                       setSubmitted(false);
-                      setFormData({ name: '', email: '', phone: '', projectType: 'Business Website', budget: '$500 - $1,500', message: '' });
+                      setErrorMsg('');
+                      setFormData({ name: '', email: '', projectType: 'Business Website', budget: '$500 - $1,500', message: '' });
                     }}
                     className="inline-flex items-center gap-2 px-8 py-3.5 rounded-full font-heading font-semibold text-white bg-[var(--color-primary)] hover:bg-[var(--color-primary-dark)] transition-colors shadow-md"
                   >
@@ -278,6 +317,13 @@ const ContactPage = () => {
                       Fill out the details below and I'll respond with initial recommendations, timeline options, and a quote.
                     </p>
                   </div>
+
+                  {errorMsg && (
+                    <div className="p-4 rounded-2xl bg-red-50 border border-red-200 text-red-700 text-xs font-semibold flex items-center gap-2">
+                      <AlertCircle size={16} className="shrink-0 text-red-500" />
+                      <span>{errorMsg}</span>
+                    </div>
+                  )}
 
                   {/* Project Type Selection Chips */}
                   <div className="space-y-3">
@@ -379,10 +425,20 @@ const ContactPage = () => {
                   {/* Submit Button */}
                   <button
                     type="submit"
-                    className="w-full inline-flex items-center justify-center gap-3 px-8 py-4 rounded-full font-heading font-semibold text-white bg-[var(--color-primary)] hover:bg-[var(--color-primary-dark)] transition-all duration-300 shadow-xl shadow-[var(--color-primary)]/20 transform hover:-translate-y-0.5"
+                    disabled={submitting}
+                    className="w-full inline-flex items-center justify-center gap-3 px-8 py-4 rounded-full font-heading font-semibold text-white bg-[var(--color-primary)] hover:bg-[var(--color-primary-dark)] disabled:opacity-70 disabled:cursor-not-allowed transition-all duration-300 shadow-xl shadow-[var(--color-primary)]/20 transform hover:-translate-y-0.5"
                   >
-                    <span>Send Project Inquiry</span>
-                    <Send size={18} />
+                    {submitting ? (
+                      <>
+                        <Loader2 size={18} className="animate-spin" />
+                        <span>Sending Inquiry...</span>
+                      </>
+                    ) : (
+                      <>
+                        <span>Send Project Inquiry</span>
+                        <Send size={18} />
+                      </>
+                    )}
                   </button>
 
                   <p className="text-center text-xs text-gray-400">

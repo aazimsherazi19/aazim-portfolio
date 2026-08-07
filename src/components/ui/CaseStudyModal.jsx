@@ -160,16 +160,27 @@ const CaseStudyModal = ({ project, isOpen, onClose }) => {
                     Measured Business Results
                   </h3>
                   <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-                    {cs.impactStats.map((stat, idx) => (
-                      <div key={idx} className="p-5 rounded-2xl bg-gradient-to-br from-[var(--color-primary)]/5 to-purple-50/50 border border-[var(--color-primary)]/15">
-                        <span className="text-2xl md:text-3xl font-heading font-extrabold text-[var(--color-primary)] block mb-1">
-                          {stat.value}
-                        </span>
-                        <span className="text-xs font-semibold text-gray-600">
-                          {stat.label}
-                        </span>
-                      </div>
-                    ))}
+                    {cs.impactStats.map((stat, idx) => {
+                      const len = stat.value ? stat.value.length : 0;
+                      const sizeClass = len > 15 
+                        ? 'text-base sm:text-lg' 
+                        : len > 8 
+                        ? 'text-lg sm:text-xl' 
+                        : 'text-xl sm:text-2xl';
+                      return (
+                        <div 
+                          key={idx} 
+                          className="p-4 sm:p-5 rounded-2xl bg-gradient-to-br from-[var(--color-primary)]/5 to-purple-50/50 border border-[var(--color-primary)]/15 flex flex-col justify-between h-full min-h-[90px] overflow-hidden"
+                        >
+                          <span className={`${sizeClass} font-heading font-bold text-[var(--color-primary)] block leading-tight tracking-tight break-words mb-1`}>
+                            {stat.value}
+                          </span>
+                          <span className="text-xs font-semibold text-gray-600 leading-snug block">
+                            {stat.label}
+                          </span>
+                        </div>
+                      );
+                    })}
                   </div>
                 </div>
               )}

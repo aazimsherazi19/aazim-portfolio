@@ -19,7 +19,8 @@ const Home = () => {
       <WhyChooseMe/>
       <OurProcess/>
       <Projects/>
-      <Testimonials/>
+      {/* HIDE FOR NOW - Uncomment to re-enable Testimonials section on Home page */}
+      {/* <Testimonials/> */}
       <PortfolioGrid isHomePage={true} />
     </div>
   )

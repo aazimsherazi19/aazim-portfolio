@@ -40,7 +40,7 @@ const Navbar = () => {
     { name: "About", path: "/about" },
     { name: "Services", path: "/services" },
     { name: "Projects", path: "/projects" },
-    { name: "Testimonials", path: "/testimonials" },
+    // { name: "Testimonials", path: "/testimonials" }, // HIDE FOR NOW - Re-enable later
     { name: "Contact", path: "/contact" },
   ];
 
@@ -187,7 +187,7 @@ const Navbar = () => {
                 <div className="space-y-2 text-xs text-gray-400">
                   <div className="flex items-center gap-2">
                     <Mail size={14} className="text-[var(--color-accent)]" />
-                    <span>aazim.dev@gmail.com</span>
+                    <span>aazimsherazi@gmail.com</span>
                   </div>
                   <div className="flex items-center gap-2">
                     <Phone size={14} className="text-[var(--color-accent)]" />

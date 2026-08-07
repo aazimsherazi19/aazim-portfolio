@@ -15,7 +15,7 @@ export const projectsData = [
     tags: ["eCommerce", "Activewear", "Mobile Responsive", "Custom UX"],
     metrics: "+140% Online Conversions",
     liveUrl: "https://strongernoteasier.com/",
-    githubUrl: "https://github.com",
+    // githubUrl: "https://github.com/aazimsherazi19",
     featured: true,
     caseStudy: {
       client: "Stronger Not Easier",
@@ -61,7 +61,7 @@ export const projectsData = [
     tags: ["Vehicle Rental", "Booking System", "Fleet Showcase", "Lead Generation"],
     metrics: "24/7 Online Bookings",
     liveUrl: "https://ondemandcarsrva.com",
-    githubUrl: "https://github.com",
+    // githubUrl: "https://github.com/aazimsherazi19",
     featured: true,
     caseStudy: {
       client: "OnDemand Cars RVA",
@@ -107,7 +107,7 @@ export const projectsData = [
     tags: ["Local SEO", "Service Business", "Lead Capture", "Click-to-Call"],
     metrics: "3x Direct Phone Leads",
     liveUrl: "https://trinityappliancerepairllc.com/",
-    githubUrl: "https://github.com",
+    // githubUrl: "https://github.com/aazimsherazi19",
     featured: true,
     caseStudy: {
       client: "Trinity Appliance Repair LLC",
@@ -153,7 +153,7 @@ export const projectsData = [
     tags: ["Restaurant", "Digital Menu", "Online Ordering", "Food & Beverage"],
     metrics: "+85% Lunch Takeout Orders",
     liveUrl: "https://meangreenscafe.com/",
-    githubUrl: "https://github.com",
+    // githubUrl: "https://github.com/aazimsherazi19",
     featured: true,
     caseStudy: {
       client: "Means Greens Cafe",
@@ -199,7 +199,7 @@ export const projectsData = [
     tags: ["Home Improvement", "Contractor Portfolio", "Quote Estimation", "Before/After Showcase"],
     metrics: "+200% High-Value Leads",
     liveUrl: "https://souzashomeimprovements.com/",
-    githubUrl: "https://github.com",
+    // githubUrl: "https://github.com/aazimsherazi19",
     featured: true,
     caseStudy: {
       client: "Souza's Home Improvements",
@@ -245,7 +245,7 @@ export const projectsData = [
     tags: ["Luxury Fashion", "eCommerce", "Editorial Design", "Global Payments"],
     metrics: "100% Automated Online Sales",
     liveUrl: "https://exquisiteglamourmore.com/",
-    githubUrl: "https://github.com",
+    // githubUrl: "https://github.com/aazimsherazi19",
     featured: true,
     caseStudy: {
       client: "Exquisite Glamour & More",
