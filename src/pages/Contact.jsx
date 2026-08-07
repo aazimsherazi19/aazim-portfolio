@@ -92,39 +92,75 @@ const ContactPage = () => {
     setSubmitting(true);
     setErrorMsg('');
 
+    let isSent = false;
+
+    // 1. Primary Attempt: Web3Forms via FormData (bypasses CORS JSON preflight)
     try {
+      const web3FormData = new FormData();
+      web3FormData.append('access_key', '758eee7e-24c8-42bd-9c62-f3b443eb3aaa');
+      web3FormData.append('subject', `🚀 New Website Inquiry: ${formData.name} (${formData.projectType})`);
+      web3FormData.append('from_name', 'Aazim Portfolio Website');
+      web3FormData.append('name', formData.name);
+      web3FormData.append('email', formData.email);
+      web3FormData.append('Service Requested', formData.projectType);
+      web3FormData.append('Estimated Budget', formData.budget);
+      web3FormData.append('Client Message', formData.message);
+      web3FormData.append('Submitted From', 'Aazim Sherazi Portfolio Contact Form');
+
       const response = await fetch('https://api.web3forms.com/submit', {
         method: 'POST',
         headers: {
-          'Content-Type': 'application/json',
           'Accept': 'application/json'
         },
-        body: JSON.stringify({
-          access_key: '758eee7e-24c8-42bd-9c62-f3b443eb3aaa',
-          subject: `🚀 New Website Inquiry: ${formData.name} (${formData.projectType})`,
-          from_name: 'Aazim Portfolio Website',
-          name: formData.name,
-          email: formData.email,
-          "Service Requested": formData.projectType,
-          "Estimated Budget": formData.budget,
-          "Client Message": formData.message,
-          "Submitted From": "Aazim Sherazi Portfolio Contact Form"
-        })
+        body: web3FormData
       });
 
       const data = await response.json();
-
-      if (data.success) {
-        setSubmitted(true);
-      } else {
-        setErrorMsg(data.message || 'Something went wrong. Please try again or email directly.');
+      if (response.ok && data.success) {
+        isSent = true;
       }
-    } catch (error) {
-      console.error('Error submitting Web3Forms contact form:', error);
-      setErrorMsg('Network error. Please try again or copy my direct email.');
-    } finally {
-      setSubmitting(false);
+    } catch (err) {
+      console.warn('Web3Forms primary endpoint blocked/failed, trying FormSubmit fallback...', err);
     }
+
+    // 2. Secondary Attempt: FormSubmit.co Fallback (if Web3Forms was blocked by Cloudflare/AdBlocker)
+    if (!isSent) {
+      try {
+        const formSubmitData = new FormData();
+        formSubmitData.append('_subject', `🚀 New Website Inquiry: ${formData.name} (${formData.projectType})`);
+        formSubmitData.append('_captcha', 'false');
+        formSubmitData.append('_template', 'table');
+        formSubmitData.append('Name', formData.name);
+        formSubmitData.append('Email', formData.email);
+        formSubmitData.append('Service Requested', formData.projectType);
+        formSubmitData.append('Estimated Budget', formData.budget);
+        formSubmitData.append('Client Message', formData.message);
+        formSubmitData.append('Submitted From', 'Aazim Sherazi Portfolio Contact Form');
+
+        const fsResponse = await fetch('https://formsubmit.co/ajax/aazimsherazi@gmail.com', {
+          method: 'POST',
+          headers: {
+            'Accept': 'application/json'
+          },
+          body: formSubmitData
+        });
+
+        const fsData = await fsResponse.json();
+        if (fsResponse.ok && (fsData.success === 'true' || fsData.success === true || fsData.message)) {
+          isSent = true;
+        }
+      } catch (fsErr) {
+        console.error('FormSubmit fallback also blocked/failed:', fsErr);
+      }
+    }
+
+    if (isSent) {
+      setSubmitted(true);
+    } else {
+      setErrorMsg('Submission was blocked by browser ad-blocker or proxy. Please click "Open Email App" or copy direct email below.');
+    }
+
+    setSubmitting(false);
   };
 
   return (
@@ -319,9 +355,27 @@ const ContactPage = () => {
                   </div>
 
                   {errorMsg && (
-                    <div className="p-4 rounded-2xl bg-red-50 border border-red-200 text-red-700 text-xs font-semibold flex items-center gap-2">
-                      <AlertCircle size={16} className="shrink-0 text-red-500" />
-                      <span>{errorMsg}</span>
+                    <div className="p-5 rounded-2xl bg-red-50 border border-red-200 text-red-700 text-xs font-semibold space-y-3">
+                      <div className="flex items-center gap-2">
+                        <AlertCircle size={18} className="shrink-0 text-red-500" />
+                        <span>{errorMsg}</span>
+                      </div>
+                      <div className="flex flex-wrap items-center gap-3 pt-1">
+                        <a
+                          href={`mailto:aazimsherazi@gmail.com?subject=${encodeURIComponent(`Website Inquiry: ${formData.name || 'Client'}`)}&body=${encodeURIComponent(`Name: ${formData.name}\nEmail: ${formData.email}\nService: ${formData.projectType}\nBudget: ${formData.budget}\n\nMessage:\n${formData.message}`)}`}
+                          className="px-4 py-2 rounded-xl bg-red-600 text-white font-bold hover:bg-red-700 transition-colors inline-flex items-center gap-1.5 shadow-sm"
+                        >
+                          <Mail size={14} />
+                          <span>Open Email App</span>
+                        </a>
+                        <button
+                          type="button"
+                          onClick={handleCopyEmail}
+                          className="px-4 py-2 rounded-xl bg-white border border-red-200 text-red-700 hover:bg-red-100 transition-colors"
+                        >
+                          {copied ? 'Copied Email!' : 'Copy Direct Email'}
+                        </button>
+                      </div>
                     </div>
                   )}
 
