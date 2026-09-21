@@ -73,6 +73,8 @@ const ContactPage = () => {
     message: ''
   });
 
+  const [honeypot, setHoneypot] = useState('');
+  const [renderTime] = useState(() => Date.now());
   const [submitting, setSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
   const [errorMsg, setErrorMsg] = useState('');
@@ -87,80 +89,62 @@ const ContactPage = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (!formData.name || !formData.email || !formData.message) return;
+    if (submitting) return;
+
+    const trimmedName = formData.name.trim();
+    const trimmedEmail = formData.email.trim();
+    const trimmedMessage = formData.message.trim();
+
+    if (!trimmedName || trimmedName.length < 2) {
+      setErrorMsg('Please enter your full name or company name (at least 2 characters).');
+      return;
+    }
+
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!trimmedEmail || !emailRegex.test(trimmedEmail)) {
+      setErrorMsg('Please enter a valid email address.');
+      return;
+    }
+
+    if (!trimmedMessage || trimmedMessage.length < 10) {
+      setErrorMsg('Please provide at least 10 characters describing your project or goals.');
+      return;
+    }
 
     setSubmitting(true);
     setErrorMsg('');
 
-    let isSent = false;
-
-    // 1. Primary Attempt: Web3Forms via FormData (bypasses CORS JSON preflight)
     try {
-      const web3FormData = new FormData();
-      web3FormData.append('access_key', '758eee7e-24c8-42bd-9c62-f3b443eb3aaa');
-      web3FormData.append('subject', `🚀 New Website Inquiry: ${formData.name} (${formData.projectType})`);
-      web3FormData.append('from_name', 'Aazim Portfolio Website');
-      web3FormData.append('name', formData.name);
-      web3FormData.append('email', formData.email);
-      web3FormData.append('Service Requested', formData.projectType);
-      web3FormData.append('Estimated Budget', formData.budget);
-      web3FormData.append('Client Message', formData.message);
-      web3FormData.append('Submitted From', 'Aazim Sherazi Portfolio Contact Form');
-
-      const response = await fetch('https://api.web3forms.com/submit', {
+      const response = await fetch('/api/contact', {
         method: 'POST',
         headers: {
+          'Content-Type': 'application/json',
           'Accept': 'application/json'
         },
-        body: web3FormData
+        body: JSON.stringify({
+          name: trimmedName,
+          email: trimmedEmail,
+          projectType: formData.projectType,
+          budget: formData.budget,
+          message: trimmedMessage,
+          company_url: honeypot,
+          renderTime
+        })
       });
 
       const data = await response.json();
+
       if (response.ok && data.success) {
-        isSent = true;
+        setSubmitted(true);
+      } else {
+        setErrorMsg(data.message || 'Unable to deliver message. Please contact directly via email below.');
       }
     } catch (err) {
-      console.warn('Web3Forms primary endpoint blocked/failed, trying FormSubmit fallback...', err);
+      console.error('Contact form submission error:', err);
+      setErrorMsg('A network error occurred while submitting. Please click "Open Email App" or use direct email.');
+    } finally {
+      setSubmitting(false);
     }
-
-    // 2. Secondary Attempt: FormSubmit.co Fallback (if Web3Forms was blocked by Cloudflare/AdBlocker)
-    if (!isSent) {
-      try {
-        const formSubmitData = new FormData();
-        formSubmitData.append('_subject', `🚀 New Website Inquiry: ${formData.name} (${formData.projectType})`);
-        formSubmitData.append('_captcha', 'false');
-        formSubmitData.append('_template', 'table');
-        formSubmitData.append('Name', formData.name);
-        formSubmitData.append('Email', formData.email);
-        formSubmitData.append('Service Requested', formData.projectType);
-        formSubmitData.append('Estimated Budget', formData.budget);
-        formSubmitData.append('Client Message', formData.message);
-        formSubmitData.append('Submitted From', 'Aazim Sherazi Portfolio Contact Form');
-
-        const fsResponse = await fetch('https://formsubmit.co/ajax/aazimsherazi@gmail.com', {
-          method: 'POST',
-          headers: {
-            'Accept': 'application/json'
-          },
-          body: formSubmitData
-        });
-
-        const fsData = await fsResponse.json();
-        if (fsResponse.ok && (fsData.success === 'true' || fsData.success === true || fsData.message)) {
-          isSent = true;
-        }
-      } catch (fsErr) {
-        console.error('FormSubmit fallback also blocked/failed:', fsErr);
-      }
-    }
-
-    if (isSent) {
-      setSubmitted(true);
-    } else {
-      setErrorMsg('Submission was blocked by browser ad-blocker or proxy. Please click "Open Email App" or copy direct email below.');
-    }
-
-    setSubmitting(false);
   };
 
   return (
@@ -328,7 +312,7 @@ const ContactPage = () => {
                   </h3>
 
                   <p className="text-gray-600 text-base max-w-md mx-auto">
-                    Thank you <strong className="text-gray-900">{formData.name}</strong> for reaching out! I have received your message and will respond with initial thoughts and pricing within 24 hours.
+                    Thank you <strong className="text-gray-900">{formData.name}</strong> for reaching out! Your inquiry for <strong className="text-gray-900">{formData.projectType}</strong> has been delivered directly to my inbox. I will review your details and reply to <strong className="text-gray-900">{formData.email}</strong> within 12–24 hours.
                   </p>
 
                   <button
@@ -345,6 +329,20 @@ const ContactPage = () => {
               ) : (
                 /* Contact Form */
                 <form onSubmit={handleSubmit} className="space-y-8">
+                  {/* Invisible Anti-Spam Honeypot Field */}
+                  <div style={{ display: 'none', position: 'absolute', left: '-9999px' }} aria-hidden="true">
+                    <label htmlFor="company_url">Do not fill this field</label>
+                    <input
+                      id="company_url"
+                      type="text"
+                      name="company_url"
+                      tabIndex={-1}
+                      autoComplete="off"
+                      value={honeypot}
+                      onChange={(e) => setHoneypot(e.target.value)}
+                    />
+                  </div>
+
                   <div>
                     <h3 className="text-2xl font-heading font-bold text-gray-900 mb-2">
                       Send a Project Inquiry
@@ -389,8 +387,9 @@ const ContactPage = () => {
                         <button
                           key={type}
                           type="button"
+                          disabled={submitting}
                           onClick={() => setFormData({ ...formData, projectType: type })}
-                          className={`px-4 py-2 rounded-xl text-xs font-semibold transition-all ${
+                          className={`px-4 py-2 rounded-xl text-xs font-semibold transition-all disabled:opacity-60 disabled:cursor-not-allowed ${
                             formData.projectType === type
                               ? 'bg-[var(--color-primary)] text-white shadow-md'
                               : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
@@ -412,8 +411,9 @@ const ContactPage = () => {
                         <button
                           key={b}
                           type="button"
+                          disabled={submitting}
                           onClick={() => setFormData({ ...formData, budget: b })}
-                          className={`px-4 py-2 rounded-xl text-xs font-semibold transition-all ${
+                          className={`px-4 py-2 rounded-xl text-xs font-semibold transition-all disabled:opacity-60 disabled:cursor-not-allowed ${
                             formData.budget === b
                               ? 'bg-[var(--color-accent)] text-black font-bold shadow-md'
                               : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
@@ -436,10 +436,11 @@ const ContactPage = () => {
                       <input
                         type="text"
                         required
+                        disabled={submitting}
                         value={formData.name}
                         onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                         placeholder="John Doe / Acme Co."
-                        className="w-full px-4 py-3.5 rounded-2xl bg-gray-50 border border-gray-200 text-gray-900 text-sm focus:outline-none focus:border-[var(--color-primary)] focus:ring-1 focus:ring-[var(--color-primary)] transition-all"
+                        className="w-full px-4 py-3.5 rounded-2xl bg-gray-50 border border-gray-200 text-gray-900 text-sm focus:outline-none focus:border-[var(--color-primary)] focus:ring-1 focus:ring-[var(--color-primary)] disabled:opacity-60 disabled:cursor-not-allowed transition-all"
                       />
                     </div>
 
@@ -452,10 +453,11 @@ const ContactPage = () => {
                       <input
                         type="email"
                         required
+                        disabled={submitting}
                         value={formData.email}
                         onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                         placeholder="john@example.com"
-                        className="w-full px-4 py-3.5 rounded-2xl bg-gray-50 border border-gray-200 text-gray-900 text-sm focus:outline-none focus:border-[var(--color-primary)] focus:ring-1 focus:ring-[var(--color-primary)] transition-all"
+                        className="w-full px-4 py-3.5 rounded-2xl bg-gray-50 border border-gray-200 text-gray-900 text-sm focus:outline-none focus:border-[var(--color-primary)] focus:ring-1 focus:ring-[var(--color-primary)] disabled:opacity-60 disabled:cursor-not-allowed transition-all"
                       />
                     </div>
                   </div>
@@ -469,10 +471,11 @@ const ContactPage = () => {
                     <textarea
                       required
                       rows={5}
+                      disabled={submitting}
                       value={formData.message}
                       onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                       placeholder="Describe your business, target audience, key features you need, current website URL (if any), and desired timeframe..."
-                      className="w-full px-4 py-3.5 rounded-2xl bg-gray-50 border border-gray-200 text-gray-900 text-sm focus:outline-none focus:border-[var(--color-primary)] focus:ring-1 focus:ring-[var(--color-primary)] transition-all resize-none"
+                      className="w-full px-4 py-3.5 rounded-2xl bg-gray-50 border border-gray-200 text-gray-900 text-sm focus:outline-none focus:border-[var(--color-primary)] focus:ring-1 focus:ring-[var(--color-primary)] disabled:opacity-60 disabled:cursor-not-allowed transition-all resize-none"
                     />
                   </div>
 
