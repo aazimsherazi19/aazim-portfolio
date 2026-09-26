@@ -49,7 +49,7 @@ const ProjectCard = ({ project, priority = false, onSelectCaseStudy }) => {
         <div className="w-full h-full pt-8 overflow-hidden relative">
           <img
             src={image}
-            alt={title}
+            alt={`${title} - ${category} project preview`}
             loading={priority ? "eager" : "lazy"}
             className="w-full h-full object-cover object-top transform group-hover:scale-105 transition-transform duration-700 ease-out"
           />

@@ -1,4 +1,5 @@
 import React from 'react'
+import SEO from '../components/common/SEO'
 import Hero from '../sections/Hero.jsx'
 import Marquee from '../components/ui/Marquee.jsx'
 import About from '../sections/About.jsx'
@@ -12,6 +13,11 @@ import PortfolioGrid from '../sections/PortfolioGrid.jsx'
 const Home = () => {
   return (
     <div>
+      <SEO
+        title="Aazim Sherazi | Turning Business Needs Into Web Solutions"
+        description="Aazim Sherazi builds custom websites, ecommerce stores, booking platforms, and web applications tailored to real business needs."
+        canonical="https://aazimsherazi.com/"
+      />
       <Hero/>
       <Marquee/>
       <About/>

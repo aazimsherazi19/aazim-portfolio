@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import SEO from '../components/common/SEO';
 import { motion } from 'framer-motion';
 import { 
   Mail, 
@@ -149,6 +150,11 @@ const ContactPage = () => {
 
   return (
     <div className="pt-12 pb-24">
+      <SEO
+        title="Contact Aazim Sherazi | Discuss Your Website Project"
+        description="Ready to build or redesign your website? Get in touch with Aazim Sherazi for project consultations, custom web development quotes, and timelines."
+        canonical="https://aazimsherazi.com/contact"
+      />
       
       {/* =========================================
          PAGE HERO HEADER

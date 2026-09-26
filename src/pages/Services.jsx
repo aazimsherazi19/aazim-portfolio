@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import SEO from '../components/common/SEO';
 import { motion, AnimatePresence } from 'framer-motion';
 import { servicesData } from '../data/services';
 import ServiceCard from '../components/ui/ServiceCard';
@@ -135,6 +136,11 @@ const ServicesPage = () => {
 
   return (
     <div className="pt-8 pb-24 relative overflow-hidden">
+      <SEO
+        title="Web Development Services | Custom Websites &amp; Solutions — Aazim Sherazi"
+        description="Custom business websites, ecommerce development, booking systems, and web application solutions built to increase inquiries, conversions, and revenue."
+        canonical="https://aazimsherazi.com/services"
+      />
       
       {/* Background Decorative Mesh Glows */}
       <div className="absolute top-20 left-1/4 w-[600px] h-[600px] bg-[var(--color-primary)]/10 rounded-full blur-[150px] pointer-events-none" />

@@ -107,7 +107,7 @@ const CaseStudyModal = ({ project, isOpen, onClose }) => {
                 <div className="relative aspect-[16/9] w-full overflow-hidden bg-gray-950">
                   <img
                     src={image}
-                    alt={title}
+                    alt={`${title} - ${category} case study showcase`}
                     className="w-full h-full object-cover object-top"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent flex items-end p-6">

@@ -11,8 +11,8 @@ const trustBadges = [
 ];
 
 const clientTypes = [
-  "Small Businesses", "Clinics & Healthcare", "Restaurants & Cafés",
-  "eCommerce Brands", "Real Estate Agencies", "Marketing Agencies"
+  "Business Websites", "eCommerce Development", "Booking Systems",
+  "Custom Web Applications", "Personal Brand Sites", "Website Redesigns"
 ];
 
 const Hero = () => {
@@ -34,30 +34,30 @@ const Hero = () => {
           transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1] }}
           className="lg:col-span-7 space-y-8 text-center lg:text-left z-10"
         >
-          {/* Availability Badge */}
+          {/* Availability & Positioning Badge */}
           <div className="inline-flex items-center gap-2.5 px-4 py-2 rounded-full bg-white border border-gray-200 shadow-sm text-xs font-semibold text-gray-800">
             <span className="relative flex h-2.5 w-2.5">
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
               <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-green-500"></span>
             </span>
-            Currently accepting new client projects
+            <span>Aazim Sherazi · Full-Stack Web Developer</span>
           </div>
 
           {/* Main Headline */}
           <h1 className="text-4xl sm:text-5xl lg:text-6xl font-heading font-extrabold text-gray-900 leading-[1.08] tracking-tight">
-            Your Business Deserves <br />
+            I Build Websites &amp; Solutions <br />
             <span className="text-[var(--color-primary)]">
-              a Website That Works
+              That Solve Real
             </span>{' '}
-            as Hard as You Do.
+            Business Problems.
           </h1>
 
           {/* Supporting Copy */}
           <p className="text-gray-600 text-lg md:text-xl leading-relaxed max-w-2xl mx-auto lg:mx-0">
-            I help business owners get professional websites that attract the right customers, build trust, and turn visitors into paying clients — without the technical headaches.
+            I help businesses and founders turn requirements, challenges, and goals into high-performing websites, ecommerce platforms, and custom web applications that attract customers and drive measurable growth.
           </p>
 
-          {/* Client Types */}
+          {/* Client Types / Solutions */}
           <div className="flex flex-wrap gap-2 justify-center lg:justify-start">
             {clientTypes.map((type, i) => (
               <span

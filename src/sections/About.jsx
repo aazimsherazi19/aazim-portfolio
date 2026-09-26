@@ -41,16 +41,16 @@ const strengths = [
 ];
 
 const techSkills = [
-  "Business Websites", "eCommerce Stores", "Booking Systems",
-  "Healthcare Websites", "Restaurant Websites", "Landing Pages",
-  "Website Redesigns", "Speed Optimization", "Ongoing Maintenance"
+  "Custom Web Applications", "Business Websites", "eCommerce Stores",
+  "Booking & Scheduling Systems", "Personal Brand & Author Sites", "Landing Pages",
+  "Website Redesigns", "Speed & Performance Optimization", "Ongoing Website Care"
 ];
 
 const identityMeta = [
-  { icon: MapPin, label: 'Based in', value: 'Pakistan' },
   { icon: Globe, label: 'Serving', value: 'Clients Worldwide' },
-  { icon: Mail, label: 'Open to', value: 'Business Projects' },
-  { icon: BookOpen, label: 'Also', value: 'BS Computer Science' },
+  { icon: MapPin, label: 'Location', value: 'Pakistan (Global Remote)' },
+  { icon: Mail, label: 'Focus', value: 'Web Solutions' },
+  { icon: BookOpen, label: 'Education', value: 'BS Computer Science' },
 ];
 
 const About = () => {
@@ -175,7 +175,7 @@ const About = () => {
           {/* Bio */}
           <div className="space-y-4">
             <p className="text-lg text-gray-700 leading-relaxed">
-              I'm Aazim — a web developer from Pakistan who specializes in building websites for businesses that want to grow online. My background is in CMS development, which means I understand what a business actually needs from a website: something that's easy to manage, attracts customers, and helps the business make more money.
+              I'm Aazim Sherazi — a professional web developer who specializes in turning business requirements into high-performing websites and web solutions. Rather than treating development as merely writing code or adjusting templates, I focus on the business outcome first: how to present your brand with authority, remove customer friction, and drive measurable conversions.
             </p>
             <p className="text-base text-gray-600 leading-relaxed">
               Over the past two years, I've built websites for clinics, restaurants, eCommerce brands, real estate agencies, and local service businesses. I also develop custom web applications when a business needs something beyond a standard website.

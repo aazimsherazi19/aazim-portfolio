@@ -1,4 +1,5 @@
 import React from 'react';
+import SEO from '../components/common/SEO';
 import AboutSection from '../sections/About';
 import { 
   User, 
@@ -37,27 +38,32 @@ const values = [
 const timeline = [
   {
     year: "Present",
-    role: "Professional Web Developer & CMS Specialist",
-    company: "Freelance / Global Clients",
-    desc: "Building business websites, eCommerce stores, booking systems, and custom web applications for clients worldwide."
+    role: "Full-Stack Web Developer & Solutions Builder",
+    company: "International Clients & Businesses",
+    desc: "Engineering custom business websites, ecommerce platforms, booking systems, and custom web applications tailored to business goals."
   },
   {
     year: "Education",
     role: "BS in Computer Science",
     company: "University Studies",
-    desc: "Deepening theoretical knowledge in software engineering, database management, computer networks, and system architecture."
+    desc: "Deepening theoretical and practical foundations in software engineering, database architectures, networks, and system design."
   },
   {
     year: "Specialization",
-    role: "WordPress, WooCommerce & MERN Development",
+    role: "Custom Web & Application Development",
     company: "Client Projects",
-    desc: "Developing custom themes, online stores, dynamic lead generation sites, and full-stack web applications."
+    desc: "Building high-performance online stores, interactive booking platforms, API integrations, and scalable full-stack web applications."
   }
 ];
 
 const AboutPage = () => {
   return (
     <div className="pt-12 pb-20">
+      <SEO
+        title="About Aazim Sherazi | Web Developer &amp; Solutions Builder"
+        description="Learn about Aazim Sherazi, a full-stack web developer helping businesses turn requirements and challenges into effective, high-performing web solutions."
+        canonical="https://aazimsherazi.com/about"
+      />
       
       {/* =========================================
          PAGE HERO HEADER
@@ -74,7 +80,7 @@ const AboutPage = () => {
         </h1>
 
         <p className="text-gray-600 text-lg leading-relaxed">
-          I am Aazim — a web developer dedicated to building reliable, high-converting websites that help small businesses, clinics, restaurants, and eCommerce brands succeed online.
+          I am Aazim Sherazi — a professional web developer dedicated to understanding business requirements and building reliable, high-converting websites and web solutions that help companies grow.
         </p>
       </section>
 

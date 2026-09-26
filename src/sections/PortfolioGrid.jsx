@@ -109,7 +109,8 @@ const PortfolioGrid = ({ isHomePage = false }) => {
               <div className="w-full h-full pt-7 overflow-hidden relative">
                 <img
                   src={project.image}
-                  alt={project.title}
+                  alt={`${project.title} - ${project.category} live website showcase`}
+                  loading="lazy"
                   className="w-full h-auto object-top transition-transform duration-[5s] ease-out group-hover:translate-y-[calc(-100%+380px)]"
                 />
               </div>

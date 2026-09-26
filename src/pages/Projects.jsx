@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import SEO from '../components/common/SEO';
 import { motion, AnimatePresence } from 'framer-motion';
 import { projectsData } from '../data/projects';
 import ProjectCard from '../components/ui/ProjectCard';
@@ -25,6 +26,11 @@ const ProjectsPage = () => {
 
   return (
     <div className="pt-12 pb-20">
+      <SEO
+        title="Client Case Studies &amp; Web Projects | Aazim Sherazi"
+        description="Explore case studies of custom business websites, ecommerce stores, booking platforms, and web solutions developed for businesses and international clients."
+        canonical="https://aazimsherazi.com/projects"
+      />
       
       {/* =========================================
          PAGE HERO HEADER
